@@ -49,7 +49,7 @@ class Block: SKNode {
     static var blocksThatExist = 0
     deinit {
         Self.blocksThatExist -= 1
-        print("Goodbyem now there are: \(Self.blocksThatExist)")
+        //print("Goodbyem now there are: \(Self.blocksThatExist)")
     }
     
     

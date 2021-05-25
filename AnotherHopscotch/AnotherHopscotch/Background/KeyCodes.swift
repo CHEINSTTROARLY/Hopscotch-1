@@ -10,6 +10,10 @@ import SpriteKit
 
 extension NSEvent {
     static var keyStrings: [String] = ["a","s","d","f","h","g","z","x","c","v","","b","q","w","e","r","y","t","1","2","3","4","6","5","=","9","7","-","8","0","]","o","u","[","i","p","","l","j","'","k",";","\\",",","/","n","m",".",""," ","`"]
+    static var shiftStrings: [String] = ["A","S","D","F","H","G","Z","X","C","V","","B","Q","W","E","R","Y","T","!","@","#","$","^","%","+","(","&","_","*",")","}","O","U","{","I","P","","L","J","\"","K",":","|","<","?","N","M",">",""," ","~"]
+    static var optionStrings: [String] = ["å","ß","∂","ƒ","˙","©","Ω","≈","ç","√","","∫","œ","∑","´","®","¥","†","¡","™","£","¢","§","∞","≠","ª","¶","–","•","º","‘","ø","¨","“","ˆ","π","","¬","∆","«","˚","…","«","≤","÷","˜","µ","≥",""," ","`"]
+    static var optionShiftStrings: [String] = ["Å","Í","Î","Ï","Ó","˝","¸","˛","Ç","◊","","ı","Œ","„","´","‰","Á","ˇ","⁄","€","‹","›","ﬂ","ﬁ","±","·","‡","—","°","‚","’","Ø","¨","”","ˆ","∏","","Ò","Ô","Æ","","Ú","»","¯","¿","˜","Â","˘",""," ","`"]
+    
     enum KeyCodes: Int {
         //case tab = 48
         //case q = 12
@@ -22,9 +26,17 @@ extension NSEvent {
     func tappedKey(_ n: KeyCodes) -> Bool {
         return keyCode == n.rawValue
     }
-    func keyString() -> String {
+    func keyString(_ modifierFlags: Modify) -> String {
         if self.keyCode > 50 { return "" }
-        return Self.keyStrings[Int(self.keyCode)]
+        switch modifierFlags {
+        case .none: return Self.keyStrings[Int(self.keyCode)]
+        case .shift: return Self.shiftStrings[Int(self.keyCode)]
+        case .option: return Self.optionStrings[Int(self.keyCode)]
+        case .optionShift: return Self.optionShiftStrings[Int(self.keyCode)]
+        }
+    }
+    enum Modify {
+        case none, shift, option, optionShift
     }
 }
 extension Set where Element == Int {

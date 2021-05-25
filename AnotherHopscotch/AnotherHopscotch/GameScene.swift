@@ -59,8 +59,8 @@ class GameScene: SKScene {
     var holdingKeys: Set<Int> = []
     
     override func keyDown(with event: NSEvent) {
-        if holdingKeys.contains(Int(event.keyCode)) { return }
-        print(event.keyCode)
+        //if holdingKeys.contains(Int(event.keyCode)) { return }
+        //print(event.keyCode)
         holdingKeys.insert(Int(event.keyCode))
         
         if let selected = selected {
@@ -77,16 +77,59 @@ class GameScene: SKScene {
         if let editing = editing {
             
             if event.tappedKey(.delete) {
+                
+                var removeLastN = 1
+                
+                if event.modifierFlags.contains(.command) {
+                    editing.label.text = ""
+                    let (updatedBox, superBox) = editing.repaintBox()
+                    self.editing = updatedBox
+                    selection = updatedBox.select()
+                    statements[superBox.item] = superBox
+                    return
+                } else if event.modifierFlags.contains(.option) {
+                    var foo = 0
+                    _ = editing.label.text?.map { i in
+                        if i == " " { foo = 1 } else { foo += 1 }
+                    }
+                    removeLastN = foo
+                }
+                
                 if editing.label.text?.isEmpty == false {
-                    editing.label.text?.removeLast()
+                    editing.label.text?.removeLast(removeLastN)
                     let (updatedBox, superBox) = editing.repaintBox()
                     self.editing = updatedBox
                     selection = updatedBox.select()
                     statements[superBox.item] = superBox
                 }
                 
-            } else if case let str = event.keyString(), str != "" {
-                editing.label.text! += str
+            } else {
+                
+                if event.modifierFlags.contains(.command) { return }
+                if event.modifierFlags.contains(.control) { return }
+                
+                if event.modifierFlags.contains(.option) {
+                    if event.modifierFlags.contains(.shift) || event.modifierFlags.contains(.capsLock) {
+                        if case let str = event.keyString(.optionShift), str != "" {
+                            editing.label.text! += str
+                        } else { return }
+                    } else {
+                        if case let str = event.keyString(.option), str != "" {
+                            editing.label.text! += str
+                        } else { return }
+                    }
+                } else {
+                    if event.modifierFlags.contains(.shift) || event.modifierFlags.contains(.capsLock) {
+                        if case let str = event.keyString(.shift), str != "" {
+                            editing.label.text! += str
+                        } else { return }
+                    } else {
+                        if case let str = event.keyString(.none), str != "" {
+                            editing.label.text! += str
+                        } else { return }
+                    }
+                }
+                
                 let (updatedBox, superBox) = editing.repaintBox()
                 self.editing = updatedBox
                 selection = updatedBox.select()
