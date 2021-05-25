@@ -12,6 +12,8 @@ enum BlockTypes {
     case ifStatement(bool: String)
     
     case basic(_ these: [EditType])
+    case copy(_ these: [Label])
+    
     enum EditType {
         case c(String)
         case edit(String)

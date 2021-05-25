@@ -9,6 +9,7 @@ import Foundation
 import SpriteKit
 
 
+// Any Colored Block Shape
 class MagicShape: SKShapeNode {
     static func Make(_ from: CGSize, color: NSColor = .black, corner: CGFloat = 10) -> Self {
         let blocko = Self(rectOf: from, cornerRadius: corner)
@@ -25,31 +26,34 @@ class MagicShape: SKShapeNode {
         return selection
     }
     
-    
 }
+
+// The White Editing SHAPE (contains a text)
 class VeryMagicShape: MagicShape {
     var label: Label!
-    var superBox: Block!
     
-    func repaintBox() -> VeryMagicShape {
+    func repaintBox() -> (VeryMagicShape, Block) {
         let updatedBox = VeryMagicShape.Make(label.paddedSizeOfLabel(), color: .white, corner: 20)
         parent?.addChild(updatedBox)
         removeFromParent()
         updatedBox.label = label
         updatedBox.position.x = (updatedBox.label.frame.size.width/2)
-        updatedBox.superBox = superBox.repaintBox()
-        return updatedBox
+        return (updatedBox, updatedBox.label.superBox.repaintBox())
     }
-    
-
-    
 }
 
 
 
 
 class Block: SKNode {
-    var shape: SKShapeNode!
+    static var blocksThatExist = 0
+    deinit {
+        Self.blocksThatExist -= 1
+        print("Goodbyem now there are: \(Self.blocksThatExist)")
+    }
+    
+    
+    var shape: MagicShape!
     var item = 0
     var labels: [Label] = []
     
@@ -60,8 +64,9 @@ class Block: SKNode {
     }
     
     static func Make(_ this: BlockTypes) -> Block {
+        Self.blocksThatExist += 1
         let shape = Block()// Block(color: .black, size: .init(width: 100, height: 100))
-        let magicColor = shape.attributes(this)
+        let magicColor = shape.attributes(this, fromBox: shape)
         
         let blocko = MagicShape.Make(.init(width: 100 + shape.calculateAccumulatedFrame().size.width, height: 100), color: magicColor)
         shape.addChild(blocko)
@@ -71,16 +76,44 @@ class Block: SKNode {
     }
     
     @discardableResult
-    func attributes(_ this: BlockTypes) -> NSColor {
+    func attributes(_ this: BlockTypes, fromBox: Block) -> NSColor {
         switch this {
         case let .createValue(name: n, setTo: s):
-            return self.attributes(.basic([.c("var"), .edit(n), .c("="), .edit(String(s))]))
+            return self.attributes(.basic([.c("var"), .edit(n), .c("="), .edit(String(s))]), fromBox: fromBox)
             //return .init(red: 220.0/255.0, green: 194.0/255.0, blue: 94.0/255.0, alpha: 1.0)
             
         case let .ifStatement(bool: b):
-            return self.attributes(.basic([.c("if"), .edit(b)]))
+            return self.attributes(.basic([.c("if"), .edit(b)]), fromBox: fromBox)
             // return .init(red: 71.0/255.0, green: 174.0/255.0, blue: 1.0, alpha: 1.0)
         
+        case let .copy(these):
+            let groupNode = SKNode()
+            
+            var soMaxX: CGFloat = -50
+            for text in these {
+                let foo = text
+                foo.superBox = fromBox
+                
+                foo.removeFromParent()
+                groupNode.addChild(foo)
+                foo.position.x = soMaxX + 50
+                soMaxX = foo.frame.maxX
+                labels.append(foo)
+            }
+            
+            addChild(groupNode)
+            let groupWidth = groupNode.calculateAccumulatedFrame().width
+            groupNode.position.y = self.frame.midY
+            //self.size.width += groupWidth
+            groupNode.position.x = self.frame.midX - (groupWidth/2)
+            
+            // Choose color of block
+            if !these[0].editable {
+                return these[0].text?.color() ?? .black
+            } else {
+                return .white // unknown starts with a text block!?
+            }
+            
         case let .basic(these):
             let groupNode = SKNode()
             
@@ -101,12 +134,10 @@ class Block: SKNode {
             
             // Choose color of block
             switch these[0] {
-            case .c("var"): return .init(red: 220.0/255.0, green: 194.0/255.0, blue: 94.0/255.0, alpha: 1.0)
-            case .c("if"): return .init(red: 71.0/255.0, green: 174.0/255.0, blue: 1.0, alpha: 1.0)
-            default: return .black
+            case let .c(this): return this.color()
+            default: return .white // unknown starts with a text block!?
             }
             
-            return .black
         }
     }
     
@@ -120,9 +151,7 @@ class Block: SKNode {
     }
     
     func repaintBox() -> Block {
-        let blockType: [BlockTypes.EditType] = labels.map { $0.editable ? .edit($0.text ?? "") : .c($0.text ?? "") }
-        
-        let updatedBox = Block.Make(.basic(blockType))
+        let updatedBox = Block.Make(.copy(labels))
         
         parent?.addChild(updatedBox)
         removeFromParent()
@@ -136,6 +165,7 @@ class Block: SKNode {
 
 class Label: SKLabelNode {
     var editable: Bool = false
+    var superBox: Block!
     
     static func Make(_ text: BlockTypes.EditType, fromBox: Block!) -> Label {
         switch text {
@@ -154,15 +184,6 @@ class Label: SKLabelNode {
             foo.fontSize = 50
             foo.zPosition = 2
             foo.canEdit(fromBox: fromBox)
-            
-//            let woah = VeryMagicShape.Make(foo.paddedSizeOfLabel(), color: .white, corner: 20)
-//            woah.zPosition = -1
-//            woah.position.y = foo.position.y
-//            woah.position.x = foo.position.x + (foo.frame.size.width/2)
-//            woah.label = foo
-//            foo.addChild(woah)
-//            woah.superBox = fromBox
-            
             return foo
         }
     }
@@ -180,7 +201,7 @@ class Label: SKLabelNode {
         woah.position.x = position.x + (frame.size.width/2)
         woah.label = self
         addChild(woah)
-        woah.superBox = fromBox
+        superBox = fromBox
     }
 }
 

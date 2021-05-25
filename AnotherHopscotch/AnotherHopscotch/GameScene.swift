@@ -17,7 +17,8 @@ class GameScene: SKScene {
         (Block.Make(.ifStatement(bool: "(5 + 5 + 5) == true"))),
         (Block.Make(.ifStatement(bool: "(5 + 5 + 5) == true"))),
         (Block.Make(.ifStatement(bool: "(5 + 10 + 5) == true"))),
-        (Block.Make(.createValue(name: "foobar", setTo: 10)))
+        (Block.Make(.createValue(name: "foobar", setTo: 10))),
+        (Block.Make(.createValue(name: "foobar", setTo: 10))),
     ]
     
     override func didMove(to view: SKView) {
@@ -41,9 +42,10 @@ class GameScene: SKScene {
             selected = nil
             
             tappedBlock.label.text! += "å"
-            let updatedBox = tappedBlock.repaintBox()
+            let (updatedBox, superBox) = tappedBlock.repaintBox()
             selection = updatedBox.select()
-            statements[updatedBox.superBox.item] = updatedBox.superBox
+            statements[superBox.item] = superBox
+            
             
         } else if let tappedBlock = nodes(at: location).first(where: { $0 is Block }) as? Block {
             selection?.removeFromParent()

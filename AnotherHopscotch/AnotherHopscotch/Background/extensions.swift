@@ -23,3 +23,13 @@ extension CGFloat {
         self += CGFloat(n) * 100
     }
 }
+
+extension String {
+    func color() -> NSColor {
+        switch self {
+        case "var": return .init(red: 220.0/255.0, green: 194.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+        case "if": return .init(red: 71.0/255.0, green: 174.0/255.0, blue: 1.0, alpha: 1.0)
+        default: return .black
+        }
+    }
+}
