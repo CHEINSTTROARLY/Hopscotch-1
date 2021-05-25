@@ -15,6 +15,10 @@
 		1B416B37265D59DA008AF1BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B416B35265D59DA008AF1BB /* Main.storyboard */; };
 		1B416B43265D59DB008AF1BB /* AnotherHopscotchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B416B42265D59DB008AF1BB /* AnotherHopscotchTests.swift */; };
 		1B416B4E265D59DB008AF1BB /* AnotherHopscotchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B416B4D265D59DB008AF1BB /* AnotherHopscotchUITests.swift */; };
+		1BDADB29265D83950011964A /* KeyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB28265D83950011964A /* KeyCodes.swift */; };
+		1BDADB2C265D83C00011964A /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB2B265D83C00011964A /* extensions.swift */; };
+		1BDADB2E265D83D70011964A /* MagicShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB2D265D83D70011964A /* MagicShapes.swift */; };
+		1BDADB30265D83E70011964A /* BlockTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB2F265D83E70011964A /* BlockTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,10 @@
 		1B416B49265D59DB008AF1BB /* AnotherHopscotchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnotherHopscotchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B416B4D265D59DB008AF1BB /* AnotherHopscotchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherHopscotchUITests.swift; sourceTree = "<group>"; };
 		1B416B4F265D59DB008AF1BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1BDADB28265D83950011964A /* KeyCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCodes.swift; sourceTree = "<group>"; };
+		1BDADB2B265D83C00011964A /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		1BDADB2D265D83D70011964A /* MagicShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicShapes.swift; sourceTree = "<group>"; };
+		1BDADB2F265D83E70011964A /* BlockTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,7 @@
 				1B416B29265D59D9008AF1BB /* AppDelegate.swift */,
 				1B416B2B265D59D9008AF1BB /* GameScene.sks */,
 				1B416B2F265D59D9008AF1BB /* GameScene.swift */,
+				1BDADB2A265D83A60011964A /* Background */,
 				1B416B31265D59D9008AF1BB /* ViewController.swift */,
 				1B416B33265D59DA008AF1BB /* Assets.xcassets */,
 				1B416B35265D59DA008AF1BB /* Main.storyboard */,
@@ -128,6 +137,17 @@
 				1B416B4F265D59DB008AF1BB /* Info.plist */,
 			);
 			path = AnotherHopscotchUITests;
+			sourceTree = "<group>";
+		};
+		1BDADB2A265D83A60011964A /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				1BDADB28265D83950011964A /* KeyCodes.swift */,
+				1BDADB2B265D83C00011964A /* extensions.swift */,
+				1BDADB2D265D83D70011964A /* MagicShapes.swift */,
+				1BDADB2F265D83E70011964A /* BlockTypes.swift */,
+			);
+			path = Background;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +280,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BDADB30265D83E70011964A /* BlockTypes.swift in Sources */,
+				1BDADB2C265D83C00011964A /* extensions.swift in Sources */,
+				1BDADB29265D83950011964A /* KeyCodes.swift in Sources */,
 				1B416B32265D59D9008AF1BB /* ViewController.swift in Sources */,
+				1BDADB2E265D83D70011964A /* MagicShapes.swift in Sources */,
 				1B416B30265D59D9008AF1BB /* GameScene.swift in Sources */,
 				1B416B2A265D59D9008AF1BB /* AppDelegate.swift in Sources */,
 			);
