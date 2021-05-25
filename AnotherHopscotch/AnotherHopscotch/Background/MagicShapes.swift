@@ -40,6 +40,9 @@ class VeryMagicShape: MagicShape {
         updatedBox.superBox = superBox.repaintBox()
         return updatedBox
     }
+    
+
+    
 }
 
 
@@ -48,6 +51,7 @@ class VeryMagicShape: MagicShape {
 class Block: SKNode {
     var shape: SKShapeNode!
     var item = 0
+    var labels: [Label] = []
     
     var indentions: Int = 0
     func indent(_ int: Int) {
@@ -70,12 +74,12 @@ class Block: SKNode {
     func attributes(_ this: BlockTypes) -> NSColor {
         switch this {
         case let .createValue(name: n, setTo: s):
-            self.attributes(.basic([.c("var"), .edit(n), .c("="), .edit(String(s))]))
-            return .init(red: 220.0/255.0, green: 194.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+            return self.attributes(.basic([.c("var"), .edit(n), .c("="), .edit(String(s))]))
+            //return .init(red: 220.0/255.0, green: 194.0/255.0, blue: 94.0/255.0, alpha: 1.0)
             
         case let .ifStatement(bool: b):
-            self.attributes(.basic([.c("if"), .edit(b)]))
-            return .init(red: 71.0/255.0, green: 174.0/255.0, blue: 1.0, alpha: 1.0)
+            return self.attributes(.basic([.c("if"), .edit(b)]))
+            // return .init(red: 71.0/255.0, green: 174.0/255.0, blue: 1.0, alpha: 1.0)
         
         case let .basic(these):
             let groupNode = SKNode()
@@ -86,6 +90,7 @@ class Block: SKNode {
                 groupNode.addChild(foo)
                 foo.position.x = soMaxX + 50
                 soMaxX = foo.frame.maxX
+                labels.append(foo)
             }
             
             addChild(groupNode)
@@ -93,6 +98,14 @@ class Block: SKNode {
             groupNode.position.y = self.frame.midY
             //self.size.width += groupWidth
             groupNode.position.x = self.frame.midX - (groupWidth/2)
+            
+            // Choose color of block
+            switch these[0] {
+            case .c("var"): return .init(red: 220.0/255.0, green: 194.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+            case .c("if"): return .init(red: 71.0/255.0, green: 174.0/255.0, blue: 1.0, alpha: 1.0)
+            default: return .black
+            }
+            
             return .black
         }
     }
@@ -107,7 +120,10 @@ class Block: SKNode {
     }
     
     func repaintBox() -> Block {
-        let updatedBox = Block.Make(.basic([.edit("foo")]))// VeryMagicShape.Make(label.paddedSizeOfLabel(), color: .white, corner: 20)
+        let blockType: [BlockTypes.EditType] = labels.map { $0.editable ? .edit($0.text ?? "") : .c($0.text ?? "") }
+        
+        let updatedBox = Block.Make(.basic(blockType))
+        
         parent?.addChild(updatedBox)
         removeFromParent()
         updatedBox.position.y = position.y
@@ -119,6 +135,7 @@ class Block: SKNode {
 }
 
 class Label: SKLabelNode {
+    var editable: Bool = false
     
     static func Make(_ text: BlockTypes.EditType, fromBox: Block!) -> Label {
         switch text {
@@ -136,14 +153,15 @@ class Label: SKLabelNode {
             foo.fontColor = .black
             foo.fontSize = 50
             foo.zPosition = 2
+            foo.canEdit(fromBox: fromBox)
             
-            let woah = VeryMagicShape.Make(foo.paddedSizeOfLabel(), color: .white, corner: 20)
-            woah.zPosition = -1
-            woah.position.y = foo.position.y
-            woah.position.x = foo.position.x + (foo.frame.size.width/2)
-            woah.label = foo
-            foo.addChild(woah)
-            woah.superBox = fromBox
+//            let woah = VeryMagicShape.Make(foo.paddedSizeOfLabel(), color: .white, corner: 20)
+//            woah.zPosition = -1
+//            woah.position.y = foo.position.y
+//            woah.position.x = foo.position.x + (foo.frame.size.width/2)
+//            woah.label = foo
+//            foo.addChild(woah)
+//            woah.superBox = fromBox
             
             return foo
         }
@@ -153,5 +171,16 @@ class Label: SKLabelNode {
         return frame.size.padding()
     }
     
+    func canEdit(fromBox: Block) {
+        editable = true
+        
+        let woah = VeryMagicShape.Make(paddedSizeOfLabel(), color: .white, corner: 20)
+        woah.zPosition = -1
+        woah.position.y = position.y
+        woah.position.x = position.x + (frame.size.width/2)
+        woah.label = self
+        addChild(woah)
+        woah.superBox = fromBox
+    }
 }
 
