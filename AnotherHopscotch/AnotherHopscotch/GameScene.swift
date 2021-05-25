@@ -12,6 +12,8 @@ extension NSEvent {
     enum KeyCodes: Int {
         case tab = 48
         case q = 12
+        case upArrow = 126
+        case downArrow = 125
     }
     func tappedKey(_ n: KeyCodes) -> Bool {
         return keyCode == n.rawValue
@@ -34,6 +36,7 @@ class GameScene: SKScene {
     ]
     
     override func didMove(to view: SKView) {
+        backgroundColor = .white
         for i in 0..<statements.count {
             let io = statements[i]
             addChild(io)
@@ -46,21 +49,24 @@ class GameScene: SKScene {
     var selected: Block!
     override func mouseDown(with event: NSEvent) {
         let location = event.location(in: self)
-        print(nodes(at: location))
         
         if let tappedBlock = nodes(at: location).first(where: { $0 is VeryMagicShape }) as? VeryMagicShape {
             selection?.removeFromParent()
             
-            selection = MagicShape.Make(tappedBlock.frame.size.padding(), color: .black, corner: 30)
+            selection = MagicShape.Make(tappedBlock.frame.size.padding(10), color: .white, corner: 25)
+            selection.alpha = 0.7
             //selected = tappedBlock
             
             selection.zPosition = -0.5
             //selection.position = tappedBlock.position
             tappedBlock.addChild(selection)
+            
         } else if let tappedBlock = nodes(at: location).first(where: { $0 is Block }) as? Block {
             selection?.removeFromParent()
             
-            selection = MagicShape.Make(tappedBlock.shape.frame.size.padding(), color: .white, corner: 20)
+            let woah = tappedBlock.shape.fillColor.withAlphaComponent(0.3)
+            selection = MagicShape.Make(tappedBlock.shape.frame.size.padding(), color: woah, corner: 20)
+            
             selected = tappedBlock
             
             selection.zPosition = -1
@@ -199,8 +205,8 @@ enum BlockTypes {
 
 
 extension CGSize {
-    func padding() -> Self {
-        return .init(width: width + 20, height: height + 20)
+    func padding(_ this: CGFloat = 20) -> Self {
+        return .init(width: width + this, height: height + this)
     }
 }
 extension CGPoint {
