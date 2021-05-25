@@ -11,6 +11,7 @@ import GameplayKit
 
 var textual =
 """
+run|foo += 1|_ind(0)
 if|(5 + 5 + 5) == true|_ind(0)
 if|(5 + 5 + 5) == true|_ind(1)
 if|(5 + 5 + 5) == true|_ind(1)
