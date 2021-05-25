@@ -3,7 +3,7 @@ So A Clone of Hopscotch
 
 Tried to add as many features as I could. I will very soon implement my `exec` function that I created.
 
-Projects are not runnable yet. That's the easy part, though. The hard part was making this UI.
+Projects are not runnable yet. That's the easy part, though. The hard part was making this UI. Users can actually mutate the text surrounded by white. That was most tricky to make.
 
 Features:
 - run small programs (i.e. print)
@@ -24,7 +24,7 @@ Features:
 
 ---
 
-Here's the program as a string:
+Here's the program as a string, so that it can be saved:
 
 ```swift
 var textual =
