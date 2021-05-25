@@ -20,6 +20,7 @@
 		1BDADB2E265D83D70011964A /* MagicShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB2D265D83D70011964A /* MagicShapes.swift */; };
 		1BDADB30265D83E70011964A /* BlockTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB2F265D83E70011964A /* BlockTypes.swift */; };
 		1BDADB32265D9E6D0011964A /* ParseString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB31265D9E6D0011964A /* ParseString.swift */; };
+		1BDADB34265DA4120011964A /* KeyPressed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB33265DA4120011964A /* KeyPressed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		1BDADB2D265D83D70011964A /* MagicShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicShapes.swift; sourceTree = "<group>"; };
 		1BDADB2F265D83E70011964A /* BlockTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockTypes.swift; sourceTree = "<group>"; };
 		1BDADB31265D9E6D0011964A /* ParseString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseString.swift; sourceTree = "<group>"; };
+		1BDADB33265DA4120011964A /* KeyPressed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPressed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				1BDADB31265D9E6D0011964A /* ParseString.swift */,
 				1BDADB2D265D83D70011964A /* MagicShapes.swift */,
 				1BDADB2F265D83E70011964A /* BlockTypes.swift */,
+				1BDADB33265DA4120011964A /* KeyPressed.swift */,
 			);
 			path = Background;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				1B416B32265D59D9008AF1BB /* ViewController.swift in Sources */,
 				1BDADB2E265D83D70011964A /* MagicShapes.swift in Sources */,
 				1B416B30265D59D9008AF1BB /* GameScene.swift in Sources */,
+				1BDADB34265DA4120011964A /* KeyPressed.swift in Sources */,
 				1BDADB32265D9E6D0011964A /* ParseString.swift in Sources */,
 				1B416B2A265D59D9008AF1BB /* AppDelegate.swift in Sources */,
 			);

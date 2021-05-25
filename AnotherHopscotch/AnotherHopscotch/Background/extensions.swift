@@ -34,3 +34,9 @@ extension String {
         }
     }
 }
+
+extension Array where Element == String {
+    func safeSub(_ n: Int) -> String {
+        return self[n]
+    }
+}
