@@ -93,7 +93,7 @@ class Block: SKNode {
             for text in these {
                 let foo = text
                 foo.superBox = fromBox
-                
+                    
                 foo.removeFromParent()
                 groupNode.addChild(foo)
                 foo.position.x = soMaxX + 50

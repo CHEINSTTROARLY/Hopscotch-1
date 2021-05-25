@@ -34,45 +34,68 @@ class GameScene: SKScene {
     
     var selection: SKShapeNode!
     var selected: Block!
+    var editing: VeryMagicShape!
+        
     override func mouseDown(with event: NSEvent) {
         let location = event.location(in: self)
         
+        selection?.removeFromParent()
+        selection = nil
+        editing = nil
+        
         if let tappedBlock = nodes(at: location).first(where: { $0 is VeryMagicShape }) as? VeryMagicShape {
-            selection?.removeFromParent()
-            selected = nil
-            
-            tappedBlock.label.text! += "å"
-            let (updatedBox, superBox) = tappedBlock.repaintBox()
-            selection = updatedBox.select()
-            statements[superBox.item] = superBox
-            
-            
+            // Select an Editing Panel
+            editing = tappedBlock
+            selection = tappedBlock.select()
         } else if let tappedBlock = nodes(at: location).first(where: { $0 is Block }) as? Block {
+            // Normally Select a Block
             selection?.removeFromParent()
             selected = tappedBlock
             selection = tappedBlock.select()
             addChild(selection)
-            
-        } else {
-            selection?.removeFromParent()
-            selection = nil
         }
     }
     
     var holdingKeys: Set<Int> = []
     
     override func keyDown(with event: NSEvent) {
+        if holdingKeys.contains(Int(event.keyCode)) { return }
         print(event.keyCode)
         holdingKeys.insert(Int(event.keyCode))
         
-        foo: if holdingKeys.holdingKeys([.tab, .q]) {
-            if selected.indentions == 0 { break foo }
-            selected.indent(-1)
-            selection.position.x.indent(-1)
-        } else if event.tappedKey(.tab) {
-            selected.indent(1)
-            selection.position.x.indent(1)
+        if let selected = selected {
+            foo: if event.tappedKey(.leftArrow) {
+                if selected.indentions == 0 { break foo }
+                selected.indent(-1)
+                selection.position.x.indent(-1)
+            } else if event.tappedKey(.rightArrow) {
+                selected.indent(1)
+                selection.position.x.indent(1)
+            }
         }
+        
+        if let editing = editing {
+            
+            if event.tappedKey(.delete) {
+                if editing.label.text?.isEmpty == false {
+                    editing.label.text?.removeLast()
+                    let (updatedBox, superBox) = editing.repaintBox()
+                    self.editing = updatedBox
+                    selection = updatedBox.select()
+                    statements[superBox.item] = superBox
+                }
+                
+            } else if case let str = event.keyString(), str != "" {
+                editing.label.text! += str
+                let (updatedBox, superBox) = editing.repaintBox()
+                self.editing = updatedBox
+                selection = updatedBox.select()
+                statements[superBox.item] = superBox
+            }
+            
+        }
+        
+        
     }
     
     override func keyUp(with event: NSEvent) {
