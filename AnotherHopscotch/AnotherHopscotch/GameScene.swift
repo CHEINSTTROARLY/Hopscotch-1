@@ -46,7 +46,18 @@ class GameScene: SKScene {
     var selected: Block!
     override func mouseDown(with event: NSEvent) {
         let location = event.location(in: self)
-        if let tappedBlock = nodes(at: location).first(where: { $0 is Block }) as? Block {
+        print(nodes(at: location))
+        
+        if let tappedBlock = nodes(at: location).first(where: { $0 is VeryMagicShape }) as? VeryMagicShape {
+            selection?.removeFromParent()
+            
+            selection = MagicShape.Make(tappedBlock.frame.size.padding(), color: .black, corner: 30)
+            //selected = tappedBlock
+            
+            selection.zPosition = -0.5
+            //selection.position = tappedBlock.position
+            tappedBlock.addChild(selection)
+        } else if let tappedBlock = nodes(at: location).first(where: { $0 is Block }) as? Block {
             selection?.removeFromParent()
             
             selection = MagicShape.Make(tappedBlock.shape.frame.size.padding(), color: .white, corner: 20)
@@ -55,6 +66,9 @@ class GameScene: SKScene {
             selection.zPosition = -1
             selection.position = tappedBlock.position
             addChild(selection)
+        } else {
+            selection?.removeFromParent()
+            selection = nil
         }
     }
     
@@ -81,8 +95,8 @@ class GameScene: SKScene {
 }
 
 class MagicShape: SKShapeNode {
-    static func Make(_ from: CGSize, color: NSColor = .black, corner: CGFloat = 10) -> MagicShape {
-        let blocko = MagicShape(rectOf: from, cornerRadius: corner)
+    static func Make(_ from: CGSize, color: NSColor = .black, corner: CGFloat = 10) -> Self {
+        let blocko = Self(rectOf: from, cornerRadius: corner)
         blocko.fillColor = color
         blocko.strokeColor = color
         return blocko
