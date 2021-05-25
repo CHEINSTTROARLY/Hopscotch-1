@@ -39,6 +39,22 @@ extension String {
                 hello.append((.repeatNTimes(n: line[1]),ind))
             } else if line[0] == "run" {
                 hello.append((.run(n: line[1]),ind))
+            } else if line[0] == "func" {
+                hello.append((.function(name: line[1], parameters: line[2]),ind))
+            } else if line[0] == "return" {
+                hello.append((.returnThing(name: line[1]),ind))
+            } else if line[0] == "struct" {
+                hello.append((.structure(name: line[1]),ind))
+            } else if line[0] == "class" {
+                hello.append((.classo(name: line[1]),ind))
+            } else if line[0] == "enum" {
+                hello.append((.enumeration(name: line[1]),ind))
+            } else if line[0] == "case" {
+                hello.append((.caseThing(name: line[1]),ind))
+            } else if line[0] == "break" {
+                hello.append((.breaker,ind))
+            } else if line[0] == "continue" {
+                hello.append((.continuer,ind))
             }
             
         }

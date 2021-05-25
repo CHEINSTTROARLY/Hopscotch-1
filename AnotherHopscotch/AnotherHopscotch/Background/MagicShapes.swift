@@ -89,6 +89,15 @@ class Block: SKNode {
         case let .repeatNTimes(n: n): return self.attributes(.basic([.c("repeat"), .edit(String(n))]), fromBox: fromBox)
         case let .iterate(this: t, over: o): return self.attributes(.basic([.c("for"), .edit(t), .c("in"), .edit(o)]), fromBox: fromBox)
         case let .run(n: n): return self.attributes(.basic([.c("run"), .edit(n)]), fromBox: fromBox)
+        
+        case let .function(name: n, parameters: p): return self.attributes(.basic([.c("func"), .edit(n), .c(":"), .edit(p)]), fromBox: fromBox)
+        case let .structure(name: n): return self.attributes(.basic([.c("struct"), .edit(n)]), fromBox: fromBox)
+        case let .classo(name: n): return self.attributes(.basic([.c("class"), .edit(n)]), fromBox: fromBox)
+        case let .enumeration(name: n): return self.attributes(.basic([.c("enum"), .edit(n)]), fromBox: fromBox)
+        case let .caseThing(name: n): return self.attributes(.basic([.c("case"), .edit(n)]), fromBox: fromBox)
+        case let .returnThing(name: n): return self.attributes(.basic([.c("return"), .edit(n)]), fromBox: fromBox)
+        case .breaker: return self.attributes(.basic([.c("break")]), fromBox: fromBox)
+        case .continuer: return self.attributes(.basic([.c("continue")]), fromBox: fromBox)
             
         case let .copy(these):
             let groupNode = SKNode()

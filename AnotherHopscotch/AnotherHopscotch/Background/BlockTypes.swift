@@ -17,6 +17,14 @@ enum BlockTypes {
     case iterate(this: String, over: String)
     case run(n: String)
     
+    case function(name: String, parameters: String)
+    case structure(name: String)
+    case classo(name: String)
+    case enumeration(name: String)
+    case caseThing(name: String)
+    case returnThing(name: String)
+    case breaker, continuer
+    
     case basic(_ these: [EditType])
     case copy(_ these: [Label])
     

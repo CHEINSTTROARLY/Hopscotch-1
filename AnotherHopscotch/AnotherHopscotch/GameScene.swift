@@ -12,16 +12,33 @@ import GameplayKit
 var textual =
 """
 run|foo += 1|_ind(0)
-if| |_ind(0)
-if| |_ind(0)
-if|(5 + 5 + 5) == true|_ind(0)
+if|true|_ind(0)
+run|print(Hello World!)|_ind(1)
+else|true|_ind(0)
+run|print(Goodbye Cruel World?)|_ind(1)
+
+if|foo == 1|_ind(0)
 if|(5 + 5 + 5) == true|_ind(1)
-if|(5 + 5 + 5) == true|_ind(1)
-if|(5 + 10 + 5) == true|_ind(0)
+if|(5 + 5 + 5) == true|_ind(2)
+break|_ind(3)
+if|(5 + 5 + 5) == true|_ind(3)
+if|(5 + 10 + 5) == true|_ind(4)
 var|foobar|=|10|_ind(0)
 var|foobar|=|10|_ind(0)
 for|i|in|7|_ind(0)
 var|doThis|=|1101000|_ind(1)
+if|Bool.random()|_ind(1)
+continue|_ind(2)
+run|print(Hello World!)|_ind(1)
+
+struct|Foo|_ind(0)
+func|doThis|(int, int, int)|_ind(1)
+run|foo += 1|_ind(2)
+return|true|_ind(2)
+class|Foo|_ind(0)
+enum|Foo|_ind(0)
+case|foo|_ind(1)
+case|bar|_ind(1)
 """
 
 class GameScene: SKScene {
