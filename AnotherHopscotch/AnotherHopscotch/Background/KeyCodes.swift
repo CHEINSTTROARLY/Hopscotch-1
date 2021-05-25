@@ -22,6 +22,7 @@ extension NSEvent {
         case upArrow = 126
         case downArrow = 125
         case delete = 51
+        case spacebar = 49
     }
     func tappedKey(_ n: KeyCodes) -> Bool {
         return keyCode == n.rawValue

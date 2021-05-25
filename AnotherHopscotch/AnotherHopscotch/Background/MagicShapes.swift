@@ -62,6 +62,9 @@ class Block: SKNode {
         indentions += int
         position.x.indent(int)
     }
+    func setIndent(_ int: Int) {
+        position.x.indent(int)
+    }
     
     static func Make(_ this: BlockTypes) -> Block {
         Self.blocksThatExist += 1
@@ -78,14 +81,15 @@ class Block: SKNode {
     @discardableResult
     func attributes(_ this: BlockTypes, fromBox: Block) -> NSColor {
         switch this {
-        case let .createValue(name: n, setTo: s):
-            return self.attributes(.basic([.c("var"), .edit(n), .c("="), .edit(String(s))]), fromBox: fromBox)
-            //return .init(red: 220.0/255.0, green: 194.0/255.0, blue: 94.0/255.0, alpha: 1.0)
+        case let .createValue(name: n, setTo: s): return self.attributes(.basic([.c("var"), .edit(n), .c("="), .edit(String(s))]), fromBox: fromBox)
+        case let .ifStatement(bool: b): return self.attributes(.basic([.c("if"), .edit(b)]), fromBox: fromBox)
+        case .elseStatement: return self.attributes(.basic([.c("else")]), fromBox: fromBox)
+        case let .elif(bool: b): return self.attributes(.basic([.c("elif"), .edit(b)]), fromBox: fromBox)
+        case let .whileStatement(bool: b): return self.attributes(.basic([.c("while"), .edit(b)]), fromBox: fromBox)
+        case let .repeatNTimes(n: n): return self.attributes(.basic([.c("repeat"), .edit(String(n))]), fromBox: fromBox)
+        case let .iterate(this: t, over: o): return self.attributes(.basic([.c("for"), .edit(t), .c("in"), .edit(o)]), fromBox: fromBox)
+        case let .run(n: n): return self.attributes(.basic([.c("run"), .edit(n)]), fromBox: fromBox)
             
-        case let .ifStatement(bool: b):
-            return self.attributes(.basic([.c("if"), .edit(b)]), fromBox: fromBox)
-            // return .init(red: 71.0/255.0, green: 174.0/255.0, blue: 1.0, alpha: 1.0)
-        
         case let .copy(these):
             let groupNode = SKNode()
             

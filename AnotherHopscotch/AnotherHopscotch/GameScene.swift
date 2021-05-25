@@ -9,6 +9,17 @@ import SpriteKit
 import GameplayKit
 
 
+var textual =
+"""
+if|(5 + 5 + 5) == true|_ind(0)
+if|(5 + 5 + 5) == true|_ind(1)
+if|(5 + 5 + 5) == true|_ind(1)
+if|(5 + 10 + 5) == true|_ind(0)
+var|foobar|=|10|_ind(0)
+var|foobar|=|10|_ind(0)
+for|i|in|7|_ind(0)
+var|doThis|=|1101000|_ind(1)
+"""
 
 class GameScene: SKScene {
     
@@ -17,19 +28,38 @@ class GameScene: SKScene {
         (Block.Make(.ifStatement(bool: "(5 + 5 + 5) == true"))),
         (Block.Make(.ifStatement(bool: "(5 + 5 + 5) == true"))),
         (Block.Make(.ifStatement(bool: "(5 + 10 + 5) == true"))),
-        (Block.Make(.createValue(name: "foobar", setTo: 10))),
-        (Block.Make(.createValue(name: "foobar", setTo: 10))),
+        (Block.Make(.createValue(name: "foobar", setTo: "10"))),
+        (Block.Make(.createValue(name: "foobar", setTo: "10"))),
     ]
     
     override func didMove(to view: SKView) {
         backgroundColor = .white
+        
+        statements = []
+        let woo = textual.parse()
+        print("Finished Parsing:")
+        print(woo)
+        
+        for i in woo {
+            let wo = Block.Make(i.0)
+            statements.append(wo)
+            wo.indentions = i.1
+        }
+        
+        print("Finished Turning into Blocks:")
+        
         for i in 0..<statements.count {
             let io = statements[i]
             addChild(io)
             io.position.x = 100 + (io.calculateAccumulatedFrame().width/2)
             io.position.y = frame.height - 200 + (CGFloat(i) * -113) + (io.calculateAccumulatedFrame().height/2)
             io.item = i
+            if io.indentions > 0 {
+                io.setIndent(io.indentions)
+            }
         }
+        
+        print("Loaded content.:")
     }
     
     var selection: SKShapeNode!
@@ -62,6 +92,20 @@ class GameScene: SKScene {
         //if holdingKeys.contains(Int(event.keyCode)) { return }
         //print(event.keyCode)
         holdingKeys.insert(Int(event.keyCode))
+        
+        if event.tappedKey(.spacebar) {
+            print("__________")
+            print("PROGRAM:")
+            for i in statements {
+                var textual = ""
+                for j in i.labels {
+                    textual += (j.text ?? "") + "|"
+                }
+                textual += "_ind(\(i.indentions))"
+                print(textual)
+            }
+            print("__________")
+        }
         
         if let selected = selected {
             foo: if event.tappedKey(.leftArrow) {

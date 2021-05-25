@@ -8,8 +8,14 @@
 import Foundation
 
 enum BlockTypes {
-    case createValue(name: String, setTo: Int)
+    case createValue(name: String, setTo: String)
     case ifStatement(bool: String)
+    case elseStatement
+    case elif(bool: String)
+    case whileStatement(bool: String)
+    case repeatNTimes(n: String)
+    case iterate(this: String, over: String)
+    case run(n: String)
     
     case basic(_ these: [EditType])
     case copy(_ these: [Label])
