@@ -8,6 +8,21 @@
 import SpriteKit
 import GameplayKit
 
+extension NSEvent {
+    enum KeyCodes: Int {
+        case tab = 48
+        case q = 12
+    }
+    func tappedKey(_ n: KeyCodes) -> Bool {
+        return keyCode == n.rawValue
+    }
+}
+extension Set where Element == Int {
+    func holdingKeys(_ these: [NSEvent.KeyCodes]) -> Bool {
+        return self.intersection(these.map { $0.rawValue }).count == these.count
+    }
+}
+
 class GameScene: SKScene {
     
     let statements: [Block] = [
@@ -28,12 +43,14 @@ class GameScene: SKScene {
     }
     
     var selection: SKShapeNode!
+    var selected: Block!
     override func mouseDown(with event: NSEvent) {
         let location = event.location(in: self)
         if let tappedBlock = nodes(at: location).first(where: { $0 is Block }) as? Block {
             selection?.removeFromParent()
             
             selection = MagicShape.Make(tappedBlock.shape.frame.size.padding(), color: .white, corner: 20)
+            selected = tappedBlock
             
             //selection = SKSpriteNode.init(color: .gray, size: tappedBlock.shape.frame.size.padding())
             
@@ -43,8 +60,24 @@ class GameScene: SKScene {
         }
     }
     
+    var holdingKeys: Set<Int> = []
+    
     override func keyDown(with event: NSEvent) {
+        print(event.keyCode)
+        holdingKeys.insert(Int(event.keyCode))
         
+        foo: if holdingKeys.holdingKeys([.tab, .q]) {
+            if selected.indentions == 0 { break foo }
+            selected.indent(-1)
+            selection.position.x.indent(-1)
+        } else if event.tappedKey(.tab) {
+            selected.indent(1)
+            selection.position.x.indent(1)
+        }
+    }
+    
+    override func keyUp(with event: NSEvent) {
+        holdingKeys.remove(Int(event.keyCode))
     }
 
 }
@@ -60,6 +93,11 @@ class MagicShape: SKShapeNode {
 
 class Block: SKNode {
     var shape: SKShapeNode!
+    var indentions: Int = 0
+    func indent(_ int: Int) {
+        indentions += int
+        position.x.indent(int)
+    }
     
     static func Make(_ this: BlockTypes) -> Block {
         let shape = Block()// Block(color: .black, size: .init(width: 100, height: 100))
@@ -133,5 +171,10 @@ extension CGSize {
 extension CGPoint {
     mutating func minusPadding() {
         x -= 10; y -= 10
+    }
+}
+extension CGFloat {
+    mutating func indent(_ n: Int) {
+        self += CGFloat(n) * 50
     }
 }
