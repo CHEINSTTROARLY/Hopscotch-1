@@ -23,7 +23,7 @@ class GameScene: SKScene {
             let io = statements[i]
             addChild(io)
             io.position.x = 100 + (io.calculateAccumulatedFrame().width/2)
-            io.position.y = frame.height - 200 + (CGFloat(i) * -110) + (io.calculateAccumulatedFrame().height/2)
+            io.position.y = frame.height - 200 + (CGFloat(i) * -113) + (io.calculateAccumulatedFrame().height/2)
         }
     }
     
