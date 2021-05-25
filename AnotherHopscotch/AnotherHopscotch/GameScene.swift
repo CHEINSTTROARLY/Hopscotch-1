@@ -52,8 +52,6 @@ class GameScene: SKScene {
             selection = MagicShape.Make(tappedBlock.shape.frame.size.padding(), color: .white, corner: 20)
             selected = tappedBlock
             
-            //selection = SKSpriteNode.init(color: .gray, size: tappedBlock.shape.frame.size.padding())
-            
             selection.zPosition = -1
             selection.position = tappedBlock.position
             addChild(selection)
@@ -90,6 +88,7 @@ class MagicShape: SKShapeNode {
         return blocko
     }
 }
+class VeryMagicShape: MagicShape {}
 
 class Block: SKNode {
     var shape: SKShapeNode!
@@ -114,11 +113,11 @@ class Block: SKNode {
     func attributes(_ this: BlockTypes) -> NSColor {
         switch this {
         case let .createValue(name: n, setTo: s):
-            self.attributes(.basic(["var", n, "=", String(s)]))
+            self.attributes(.basic([.c("var"), .edit(n), .c("="), .edit(String(s))]))
             return .init(red: 220.0/255.0, green: 194.0/255.0, blue: 94.0/255.0, alpha: 1.0)
             
         case let .ifStatement(bool: b):
-            self.attributes(.basic(["if", b]))
+            self.attributes(.basic([.c("if"), .edit(b)]))
             return .init(red: 71.0/255.0, green: 174.0/255.0, blue: 1.0, alpha: 1.0)
         
         case let .basic(these):
@@ -143,13 +142,31 @@ class Block: SKNode {
 }
 
 class Label: SKLabelNode {
-    static func Make(_ text: String) -> Label {
-        let foo = Label(text: text)
-        foo.verticalAlignmentMode = .center
-        foo.horizontalAlignmentMode = .left
-        foo.fontColor = .white
-        foo.fontSize = 50
-        return foo
+    static func Make(_ text: BlockTypes.EditType) -> Label {
+        switch text {
+        case let .c(text):
+            let foo = Label(text: text)
+            foo.verticalAlignmentMode = .center
+            foo.horizontalAlignmentMode = .left
+            foo.fontColor = .white
+            foo.fontSize = 50
+            return foo
+        case let .edit(text):
+            let foo = Label(text: text)
+            foo.verticalAlignmentMode = .center
+            foo.horizontalAlignmentMode = .left
+            foo.fontColor = .black
+            foo.fontSize = 50
+            foo.zPosition = 2
+            
+            let woah = VeryMagicShape.Make(foo.frame.size.padding(), color: .white, corner: 20)
+            woah.zPosition = -1
+            woah.position.y = foo.position.y
+            woah.position.x = foo.position.x + (foo.frame.size.width/2)
+            foo.addChild(woah)
+            
+            return foo
+        }
     }
     
 }
@@ -159,7 +176,11 @@ enum BlockTypes {
     case createValue(name: String, setTo: Int)
     case ifStatement(bool: String)
     
-    case basic(_ these: [String])
+    case basic(_ these: [EditType])
+    enum EditType {
+        case c(String)
+        case edit(String)
+    }
 }
 
 
