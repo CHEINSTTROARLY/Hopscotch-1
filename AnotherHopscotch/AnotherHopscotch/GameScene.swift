@@ -216,6 +216,6 @@ extension CGPoint {
 }
 extension CGFloat {
     mutating func indent(_ n: Int) {
-        self += CGFloat(n) * 50
+        self += CGFloat(n) * 100
     }
 }
