@@ -16,13 +16,39 @@ class MagicShape: SKShapeNode {
         blocko.strokeColor = color
         return blocko
     }
+    
+    func select() -> MagicShape {
+        let selection = MagicShape.Make(frame.size.padding(10), color: .white, corner: 25)
+        selection.alpha = 0.7
+        selection.zPosition = -0.5
+        addChild(selection)
+        return selection
+    }
+    
+    
 }
 class VeryMagicShape: MagicShape {
     var label: Label!
+    var superBox: Block!
+    
+    func repaintBox() -> VeryMagicShape {
+        let updatedBox = VeryMagicShape.Make(label.paddedSizeOfLabel(), color: .white, corner: 20)
+        parent?.addChild(updatedBox)
+        removeFromParent()
+        updatedBox.label = label
+        updatedBox.position.x = (updatedBox.label.frame.size.width/2)
+        updatedBox.superBox = superBox.repaintBox()
+        return updatedBox
+    }
 }
+
+
+
 
 class Block: SKNode {
     var shape: SKShapeNode!
+    var item = 0
+    
     var indentions: Int = 0
     func indent(_ int: Int) {
         indentions += int
@@ -56,7 +82,7 @@ class Block: SKNode {
             
             var soMaxX: CGFloat = -50
             for text in these {
-                let foo = Label.Make(text)
+                let foo = Label.Make(text, fromBox: self)
                 groupNode.addChild(foo)
                 foo.position.x = soMaxX + 50
                 soMaxX = foo.frame.maxX
@@ -70,10 +96,31 @@ class Block: SKNode {
             return .black
         }
     }
+    
+    func select() -> MagicShape {
+        let woah = shape.fillColor.withAlphaComponent(0.3)
+        let selection = MagicShape.Make(shape.frame.size.padding(), color: woah, corner: 20)
+        
+        selection.zPosition = -1
+        selection.position = position
+        return selection
+    }
+    
+    func repaintBox() -> Block {
+        let updatedBox = Block.Make(.basic([.edit("foo")]))// VeryMagicShape.Make(label.paddedSizeOfLabel(), color: .white, corner: 20)
+        parent?.addChild(updatedBox)
+        removeFromParent()
+        updatedBox.position.y = position.y
+        updatedBox.position.x = calculateAccumulatedFrame().minX + (updatedBox.calculateAccumulatedFrame().width/2)
+        updatedBox.item = item
+        return updatedBox
+    }
+    
 }
 
 class Label: SKLabelNode {
-    static func Make(_ text: BlockTypes.EditType) -> Label {
+    
+    static func Make(_ text: BlockTypes.EditType, fromBox: Block!) -> Label {
         switch text {
         case let .c(text):
             let foo = Label(text: text)
@@ -96,6 +143,7 @@ class Label: SKLabelNode {
             woah.position.x = foo.position.x + (foo.frame.size.width/2)
             woah.label = foo
             foo.addChild(woah)
+            woah.superBox = fromBox
             
             return foo
         }
