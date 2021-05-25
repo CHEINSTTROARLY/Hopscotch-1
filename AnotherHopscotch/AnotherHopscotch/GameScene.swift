@@ -14,7 +14,8 @@ class GameScene: SKScene {
         (Block.Make(.ifStatement(bool: "(5 + 5 + 5) == true"))),
         (Block.Make(.ifStatement(bool: "(5 + 5 + 5) == true"))),
         (Block.Make(.ifStatement(bool: "(5 + 5 + 5) == true"))),
-        (Block.Make(.ifStatement(bool: "(5 + 10 + 5) == true")))
+        (Block.Make(.ifStatement(bool: "(5 + 10 + 5) == true"))),
+        (Block.Make(.createValue(name: "foobar", setTo: 10)))
     ]
     
     override func didMove(to view: SKView) {
@@ -62,22 +63,25 @@ class Block: SKNode {
     
     static func Make(_ this: BlockTypes) -> Block {
         let shape = Block()// Block(color: .black, size: .init(width: 100, height: 100))
-        shape.attributes(this)
+        let magicColor = shape.attributes(this)
         
-        let blocko = MagicShape.Make(.init(width: 100 + shape.calculateAccumulatedFrame().size.width, height: 100))
+        let blocko = MagicShape.Make(.init(width: 100 + shape.calculateAccumulatedFrame().size.width, height: 100), color: magicColor)
         shape.addChild(blocko)
         shape.shape = blocko
         
         return shape
     }
     
-    func attributes(_ this: BlockTypes) {
+    @discardableResult
+    func attributes(_ this: BlockTypes) -> NSColor {
         switch this {
         case let .createValue(name: n, setTo: s):
-            self.attributes(.basic([n, String(s)]))
+            self.attributes(.basic(["var", n, "=", String(s)]))
+            return .init(red: 220.0/255.0, green: 194.0/255.0, blue: 94.0/255.0, alpha: 1.0)
             
         case let .ifStatement(bool: b):
             self.attributes(.basic(["if", b]))
+            return .init(red: 71.0/255.0, green: 174.0/255.0, blue: 1.0, alpha: 1.0)
         
         case let .basic(these):
             let groupNode = SKNode()
@@ -95,6 +99,7 @@ class Block: SKNode {
             groupNode.position.y = self.frame.midY
             //self.size.width += groupWidth
             groupNode.position.x = self.frame.midX - (groupWidth/2)
+            return .black
         }
     }
 }
