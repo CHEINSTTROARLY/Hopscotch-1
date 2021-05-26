@@ -21,12 +21,10 @@ Features:
 
 Now the porgram is runnable! Blocks that work:
 - run, var, if, elif, else, for, while, repeat, break, continue
-
-Blocks coming next:
-- func
+- func, return, parameters for funcs~
 
 More TODOs:
-- implement parsing for Array, Set, Dict, Tuple, etc.
+- implement parsing for Array, Set, Dict, Tuple, etc. `[1,2,3].arrayInt` or `[1,2,3].as([int])`
 ___
 
 ![Example 1](https://github.com/CHEINSTTROARLY/Hopscotch-1/blob/main/Example1.png)
