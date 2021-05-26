@@ -12,10 +12,14 @@ import GameplayKit
 var textual =
 """
 var|foo|=|0.int|_ind(0)
+for|i|in|range(1.int,7.int)|_ind(0)
+run|print(i.get)|_ind(1)
+for|i|in|hello|_ind(0)
+run|print(i.get)|_ind(1)
 while|true|_ind(0)
 run|set(foo,$foo.add(1.int))|_ind(1)
 run|print($foo)|_ind(1)
-if|get(foo).equals(10000.int)|_ind(1)
+if|get(foo).equals(10.int)|_ind(1)
 break|_ind(2)
 none|_ind(0)
 run|foo += 1|_ind(0)

@@ -113,6 +113,22 @@ extension Array where Element == SuperEnumCompile {
                         if foo.break { break }
                     }
                     
+                case let .iterate(this: valueName, over: collection):
+                    var iterateResults = exec(collection).value
+                    
+                    // Iterate Bugfix over string
+                    if iterateResults is String {
+                        iterateResults = "\(iterateResults)".map { $0 }
+                    }
+                    
+                    // Iterate over any Sequence
+                    let superMirror = Mirror.init(reflecting: iterateResults)
+                    for i in superMirror.children {
+                        Main.values[valueName] = Value(.any, i.value)
+                        let foo = enums.runEnum()
+                        if foo.continue { continue }
+                        if foo.break { break }
+                    }
                     
                 default:
                     print("Haven't coded for \(blockType)")

@@ -86,6 +86,10 @@ struct Precompile {
             .literal(Value(.bool, ((Value(.any, param[0]) == (param[1]))))),
         ]}),
         
+        .functionWithParams(name: "range", parameters: .tuple([.int, .int]), returnType: .array(.int), code: { param in [
+            .literal(Value(.array(.int), Array(int(param[0])...int(param[1])))),
+        ]}),
+        
         // Neg Function
         .functionWithParams(name: "neg", parameters: .int, returnType: .int, code: { param in [
             .literal(Value(.int, -int(param[0]))),

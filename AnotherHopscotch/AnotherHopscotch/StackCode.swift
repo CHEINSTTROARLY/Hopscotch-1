@@ -87,6 +87,8 @@ extension Array where Element == StackCode {
                         //print("---,", result)
                         if result.magicType != .void {
                             return result
+                        } else if "\(result.magicType)" == "any" {
+                            return result
                         }
                     }
                 } else {
