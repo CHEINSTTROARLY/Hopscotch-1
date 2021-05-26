@@ -55,14 +55,18 @@ extension Array where Element == CodeList.Element {
     }
 }
 extension Array where Element == SuperEnumCompile {
-    func runEnum() {
+    
+    
+    func runEnum() -> (continue: Bool, break: Bool) {
         var stillCheckIfStatements = true
         
-        for i in self {
+        mainLoop: for i in self {
             switch i {
             case let .this(blockType, contains: enums):
                 switch blockType {
-                case .none: continue
+                case .none: return (false, false)
+                case .continuer: return (true, false)
+                case .breaker: return (false, true)
                     
                 case let .run(n: prog):
                     exec(prog)
@@ -96,6 +100,12 @@ extension Array where Element == SuperEnumCompile {
                 case .elseStatement:
                     if !stillCheckIfStatements { continue }
                     enums.runEnum()
+                    
+                    
+                case let .whileStatement(bool: booleanExpression):
+                    while exec(booleanExpression) == true {
+                        let foo = runEnum()
+                    }
                 
                 default:
                     print("Haven't coded for \(blockType)")
@@ -105,6 +115,7 @@ extension Array where Element == SuperEnumCompile {
                 
             }
         }
+        return (false, false)
     }
 }
 
