@@ -15,13 +15,6 @@ func reset() {
 
 typealias CodeList = [(BlockTypes, indents: Int)]
 enum SuperEnumCompile {
-    //case exec(String)
-    //case makeValue(name: String, setTo: String)
-    //indirect case list([SuperEnumCompile])
-
-    //case function(name: String, parameters: MagicTypes, returnType: MagicTypes, code: ([Any]) -> [StackCode])
-    //indirect case ifStatement(conditions: [(String, SuperEnumCompile)], else: SuperEnumCompile)
-    //indirect case ifState(condition: String, exec: SuperEnumCompile)
     case this(BlockTypes, contains: [SuperEnumCompile])
 }
 
@@ -57,7 +50,7 @@ extension Array where Element == CodeList.Element {
 extension Array where Element == SuperEnumCompile {
     
     
-    func runEnum() -> (break: Bool, continue: Bool) {
+    func runEnum() -> (break: Bool, continue: Bool, returnedValue: Value?) {
         var stillCheckIfStatements = true
         
         mainLoop: for i in self {
@@ -65,8 +58,9 @@ extension Array where Element == SuperEnumCompile {
             case let .this(blockType, contains: enums):
                 switch blockType {
                 case .none: continue mainLoop
-                case .continuer: return (false, true)
-                case .breaker: return (true, false)
+                case .continuer: return (false, true, nil)
+                case .breaker: return (true, false, nil)
+                case let .returnThing(name: this): return (false, false, exec(this))
                     
                 case let .createValue(name: nameOfValue, setTo: setValueTo):
                     Main.values[nameOfValue] = exec(setValueTo)
@@ -137,6 +131,9 @@ extension Array where Element == SuperEnumCompile {
                         if foo.break { break }
                     }
                     
+                case let .function(name: funcName):
+                    Main.customFunctions[funcName] = enums
+                    
                 default:
                     print("Haven't coded for \(blockType)")
                     
@@ -145,7 +142,7 @@ extension Array where Element == SuperEnumCompile {
                 
             }
         }
-        return (false, false)
+        return (false, false, nil)
     }
 }
 

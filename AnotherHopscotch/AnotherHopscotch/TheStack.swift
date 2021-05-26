@@ -11,6 +11,7 @@ typealias FunctionType = (parameters: MagicTypes, returnType: MagicTypes, code: 
 //typealias ValueType = (typeOf: MagicTypes, value: Any)
 
 class Main {
+    static var customFunctions: [String:[SuperEnumCompile]] = [:]
     static var functions: [String:[FunctionType]] = [:]
     static var values: [String:Value] = [:]
     

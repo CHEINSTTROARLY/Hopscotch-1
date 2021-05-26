@@ -40,7 +40,7 @@ extension String {
             } else if line[0] == "run" {
                 hello.append((.run(n: line[1]),ind))
             } else if line[0] == "func" {
-                hello.append((.function(name: line[1], parameters: line[2]),ind))
+                hello.append((.function(name: line[1]),ind))
             } else if line[0] == "return" {
                 hello.append((.returnThing(name: line[1]),ind))
             } else if line[0] == "struct" {

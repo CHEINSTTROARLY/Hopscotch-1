@@ -11,6 +11,9 @@ import GameplayKit
 
 var textual =
 """
+func|doThis|_ind(0)
+return|5.int|_ind(1)
+run|print(doThis(1))|_ind(0)
 var|foo|=|0.int|_ind(0)
 repeat|10|_ind(0)
 run|print(0, 1)|_ind(1)
@@ -45,7 +48,7 @@ continue|_ind(2)
 run|print(Hello World!)|_ind(1)
 
 struct|Foo|_ind(0)
-func|doThis|(int, int, int)|_ind(1)
+func|doThis|_ind(1)
 run|foo += 1|_ind(2)
 return|true|_ind(2)
 class|Foo|_ind(0)
