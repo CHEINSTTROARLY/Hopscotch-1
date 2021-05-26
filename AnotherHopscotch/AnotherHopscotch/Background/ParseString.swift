@@ -35,7 +35,7 @@ extension String {
                 hello.append((.iterate(this: line[1], over: line[3]),ind))
             } else if line[0] == "while" {
                 hello.append((.whileStatement(bool: line[1]),ind))
-            } else if line[0] == "while" {
+            } else if line[0] == "repeat" {
                 hello.append((.repeatNTimes(n: line[1]),ind))
             } else if line[0] == "run" {
                 hello.append((.run(n: line[1]),ind))

@@ -130,6 +130,13 @@ extension Array where Element == SuperEnumCompile {
                         if foo.break { break }
                     }
                     
+                case let .repeatNTimes(n: ntimes):
+                    for _ in 1...int(exec(ntimes).value) {
+                        let foo = enums.runEnum()
+                        if foo.continue { continue }
+                        if foo.break { break }
+                    }
+                    
                 default:
                     print("Haven't coded for \(blockType)")
                     

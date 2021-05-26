@@ -12,6 +12,8 @@ import GameplayKit
 var textual =
 """
 var|foo|=|0.int|_ind(0)
+repeat|10|_ind(0)
+run|print(0, 1)|_ind(1)
 for|i|in|range(1.int,7.int)|_ind(0)
 run|print(i.get)|_ind(1)
 for|i|in|hello|_ind(0)
@@ -63,6 +65,7 @@ class GameScene: SKScene {
         (Block.Make(.ifStatement(bool: "(5 + 10 + 5) == true"))),
         (Block.Make(.createValue(name: "foobar", setTo: "10"))),
         (Block.Make(.createValue(name: "foobar", setTo: "10"))),
+        (Block.Make(.repeatNTimes(n: "100")))
     ]
     
     override func didMove(to view: SKView) {
@@ -77,7 +80,7 @@ class GameScene: SKScene {
         let woo = textual.parse()
         print("Finished Parsing:")
         print(woo)
-        
+
         for i in woo {
             let wo = Block.Make(i.0)
             statements.append(wo)
