@@ -197,6 +197,12 @@ class Label: SKLabelNode {
             foo.horizontalAlignmentMode = .left
             foo.fontColor = .black
             foo.fontSize = 50
+            
+            let fooFrameWidth = foo.frame.width
+            if fooFrameWidth > 16000 {
+                foo.fontSize /= (fooFrameWidth/8000)
+            }
+            
             foo.zPosition = 2
             foo.canEdit(fromBox: fromBox)
             return foo

@@ -106,6 +106,30 @@ struct Precompile {
         .functionWithParams(name: "neg", parameters: .int, returnType: .int, code: { param in [
             .literal(Value(.int, -int(param[0]))),
         ]}),
+        
+        // Reversed
+        .functionWithParams(name: "rev", parameters: .int, returnType: .int, code: { param in [
+            .literal(Value(.int, Prime.inverse_number(int(param[0])))),
+        ]}),
+        // Reversed
+        .functionWithParams(name: "rev", parameters: .bigint, returnType: .bigint, code: { param in [
+            .literal(Value(.bigint, Prime.inverse_number((param[0]as!BigInt)))),
+        ]}),
+        // Palindromed
+        .functionWithParams(name: "palin", parameters: .int, returnType: .int, code: { param in [
+            .literal(Value(.int, Prime.turn_into_palindrome(int(param[0])))),
+        ]}),
+        // Palindromed
+        .functionWithParams(name: "palin", parameters: .bigint, returnType: .bigint, code: { param in [
+            .literal(Value(.bigint, Prime.turn_into_palindrome((param[0]as!BigInt)))),
+        ]}),
+        // isPrime
+        .functionWithParams(name: "isPrime", parameters: .bigint, returnType: .bool, code: { param in [
+            .literal(Value(.bigint, Prime.isPrime(n: (param[0]as!BigInt)))),
+        ]}),
+        
+        
+        
         // Sub Function
     //    .functionWithParams(name: "sub", parameters: .tuple([.int, .int]), returnType: .int, code: { param in [
     //        ._run(.add, [.literal(.int, param[0]), ._run(.neg, [.literal(.int, param[1])])])
