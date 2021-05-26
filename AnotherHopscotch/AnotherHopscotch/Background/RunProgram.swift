@@ -13,10 +13,119 @@ func reset() {
     Precompile.go()
 }
 
-extension Array where Element == (BlockTypes, indents: Int) {
+typealias CodeList = [(BlockTypes, indents: Int)]
+enum SuperEnumCompile {
+    //case exec(String)
+    //case makeValue(name: String, setTo: String)
+    //indirect case list([SuperEnumCompile])
+
+    //case function(name: String, parameters: MagicTypes, returnType: MagicTypes, code: ([Any]) -> [StackCode])
+    //indirect case ifStatement(conditions: [(String, SuperEnumCompile)], else: SuperEnumCompile)
+    //indirect case ifState(condition: String, exec: SuperEnumCompile)
+    case this(BlockTypes, contains: [SuperEnumCompile])
+}
+
+extension Array where Element == CodeList.Element {
+    func compileEnum(indent: Int = 0) -> [SuperEnumCompile] {
+        
+        var listo: [SuperEnumCompile] = []
+        
+        var aboutToAppent: BlockTypes!
+        var wiltThouAppend: CodeList = []
+        for (cod, ind) in self {
+            if ind == indent {
+                if let a = aboutToAppent {
+                    listo.append(.this(a, contains: wiltThouAppend.compileEnum(indent: indent + 1)))
+                }
+                wiltThouAppend = []
+                aboutToAppent = cod
+            }
+            if ind > indent {
+                wiltThouAppend.append((cod, ind))
+            }
+            if ind < indent {
+                fatalError()
+            }
+        }
+        if let a = aboutToAppent {
+            listo.append(.this(a, contains: wiltThouAppend.compileEnum(indent: indent + 1)))
+        }
+        return listo
+        
+    }
+}
+extension Array where Element == SuperEnumCompile {
+    func runEnum() {
+        var stillCheckIfStatements = true
+        
+        for i in self {
+            switch i {
+            case let .this(blockType, contains: enums):
+                switch blockType {
+                case .none: continue
+                    
+                case let .run(n: prog):
+                    exec(prog)
+                
+                case let .ifStatement(bool: booleanExpression):
+                    stillCheckIfStatements = true
+                    
+                    let expression = exec(booleanExpression)
+                    if expression == true {
+                        stillCheckIfStatements = false
+                        enums.runEnum()
+                    } else if expression == false {
+                        continue
+                    } else {
+                        print("WARNING \(expression) is not a boolean result.")
+                    }
+                
+                case let .elif(bool: booleanExpression):
+                    if !stillCheckIfStatements { continue }
+                    
+                    let expression = exec(booleanExpression)
+                    if expression == true {
+                        stillCheckIfStatements = false
+                        enums.runEnum()
+                    } else if expression == false {
+                        continue
+                    } else {
+                        print("WARNING \(expression) is not a boolean result.")
+                    }
+                    
+                case .elseStatement:
+                    if !stillCheckIfStatements { continue }
+                    enums.runEnum()
+                
+                default:
+                    print("Haven't coded for \(blockType)")
+                    
+                }
+                
+                
+            }
+        }
+    }
+}
+
+extension Array where Element == CodeList.Element {
     func runProgram() {
         print("Precompiling...")
         reset()
+        
+        print("Compiling Enum Program...")
+
+        
+        let compileEnumBetter: [SuperEnumCompile] = self.compileEnum()
+        print(compileEnumBetter)
+        
+        compileEnumBetter.runEnum()
+        print("END")
+        return
+        
+        
+        
+        
         
         print("Running Program!")
         print("__________")
