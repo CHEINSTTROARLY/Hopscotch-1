@@ -92,7 +92,6 @@ extension Array where Element == StackCode {
                         }
                     }
                 } else {
-                    print("Couldn't find function: \(nam)")
                     var oo = 0
                     for i in param {
                         Main.values[String(oo)] = [i].run()

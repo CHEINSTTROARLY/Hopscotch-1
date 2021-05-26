@@ -21,6 +21,8 @@ extension Array where Element == String {
 extension String {
     
     func resolveDot() -> String {
+        // This line may be a bugfix for void param functions...
+        if !self.contains(".") { return self }
         
         //print("start:", self)
         var p: [(String,[String])] = [("",[""])]

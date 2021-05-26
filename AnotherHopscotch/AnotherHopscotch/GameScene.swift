@@ -12,8 +12,12 @@ import GameplayKit
 var textual =
 """
 func|doThis|_ind(0)
-return|5.int|_ind(1)
+return|$0|_ind(1)
+run|print(print())|_ind(0)
+run|print(doThis())|_ind(0)
 run|print(doThis(1))|_ind(0)
+run|print(doThis(2))|_ind(0)
+run|print(doThis(3, 1))|_ind(0)
 var|foo|=|0.int|_ind(0)
 repeat|10|_ind(0)
 run|print(0, 1)|_ind(1)
