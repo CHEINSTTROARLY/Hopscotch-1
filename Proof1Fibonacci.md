@@ -1,4 +1,4 @@
-So here's the program that VERY QUICKLY lists of Fibonacci numbers. I used the BigInt framework.
+So here's the program that VERY QUICKLY lists of Fibonacci numbers. I used the BigInt framework. Here the results after 10-20 seconds of running
 
 1 
 2 
