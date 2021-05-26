@@ -69,3 +69,12 @@ case|foo|_ind(1)
 case|bar|_ind(1)
 """
 ```
+
+
+---
+
+# Fibonacci
+
+
+
+
