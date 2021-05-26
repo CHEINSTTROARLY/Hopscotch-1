@@ -98,6 +98,7 @@ class Block: SKNode {
         case let .returnThing(name: n): return self.attributes(.basic([.c("return"), .edit(n)]), fromBox: fromBox)
         case .breaker: return self.attributes(.basic([.c("break")]), fromBox: fromBox)
         case .continuer: return self.attributes(.basic([.c("continue")]), fromBox: fromBox)
+        case .none: return self.attributes(.basic([.c("none")]), fromBox: fromBox)
             
         case let .copy(these):
             let groupNode = SKNode()

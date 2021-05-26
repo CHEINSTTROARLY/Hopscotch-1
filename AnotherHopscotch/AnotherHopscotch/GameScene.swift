@@ -16,7 +16,7 @@ if|true|_ind(0)
 run|print(Hello World!)|_ind(1)
 else|true|_ind(0)
 run|print(Goodbye Cruel World?)|_ind(1)
-
+none|_ind(0)
 if|foo == 1|_ind(0)
 if|(5 + 5 + 5) == true|_ind(1)
 if|(5 + 5 + 5) == true|_ind(2)
@@ -121,7 +121,19 @@ class GameScene: SKScene {
     }
     
     override func mouseDragged(with event: NSEvent) {
-        superNode.position.y -= event.deltaY
+        superNode.position.y -= (event.deltaY)*2
+        superNode.position.x += (event.deltaX)*2
+        print(superNode.position)
+        
+        let ok = superNode.calculateAccumulatedFrame()
+        let okok = frame.size
+        let massiveHeight = 200 + ok.height - okok.height
+        let massiveWidth = 200 + ok.width - okok.width
+        
+        if superNode.position.x > 0 { superNode.position.x = 0 }
+        if superNode.position.y < 0 { superNode.position.y = 0 }
+        if superNode.position.y > massiveHeight { superNode.position.y = massiveHeight }
+        if superNode.position.x < -massiveWidth { superNode.position.x = -massiveWidth }
     }
 
 }

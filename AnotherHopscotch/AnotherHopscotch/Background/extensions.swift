@@ -29,11 +29,12 @@ extension String {
         switch self {
         case "var": return .init(red: 220.0/255.0, green: 194.0/255.0, blue: 94.0/255.0, alpha: 1.0)
         case "if","else","elif","for","repeat","while","continue","break","return": return .init(red: 71.0/255.0, green: 174.0/255.0, blue: 1.0, alpha: 1.0)
-        case "run": return .init(red: 220.0/255.0, green: 220.0/255.0, blue: 220.0/255.0, alpha: 1.0)
+        case "run","none": return .init(red: 220.0/255.0, green: 220.0/255.0, blue: 220.0/255.0, alpha: 1.0)
         case "case": return .init(red: 134.0/255.0, green: 220.0/255.0, blue: 139.0/255.0, alpha: 1.0)
         case "func","struct","class","enum": return .init(red: 242.0/255.0, green: 115.0/255.0, blue: 139.0/255.0, alpha: 1.0)
-            
-        default: return .black
+        
+        default:
+            return .black
         }
     }
 }

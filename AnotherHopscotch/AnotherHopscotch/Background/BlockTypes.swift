@@ -27,6 +27,7 @@ enum BlockTypes {
     
     case basic(_ these: [EditType])
     case copy(_ these: [Label])
+    case none
     
     enum EditType {
         case c(String)

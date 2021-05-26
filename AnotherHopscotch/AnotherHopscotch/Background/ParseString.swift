@@ -55,6 +55,8 @@ extension String {
                 hello.append((.breaker,ind))
             } else if line[0] == "continue" {
                 hello.append((.continuer,ind))
+            } else if line[0] == "none" {
+                hello.append((.none,ind))
             }
             
         }
