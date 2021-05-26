@@ -17,6 +17,18 @@ Features:
 - attributes, static variables, static functions, initializers
 - persisting variables: use "store" instead of "var"
 
+---
+
+Now the porgram is runnable! Blocks that work:
+- run, var, if, elif, else, for, while, repeat, break, continue
+
+Blocks coming next:
+- func
+
+More TODOs:
+- implement parsing for Array, Set, Dict, Tuple, etc.
+___
+
 ![Example 1](https://github.com/CHEINSTTROARLY/Hopscotch-1/blob/main/Example1.png)
 ![Example 2](https://github.com/CHEINSTTROARLY/Hopscotch-1/blob/main/Example2.png)
 ![Example 3](https://github.com/CHEINSTTROARLY/Hopscotch-1/blob/main/Example3.png)
