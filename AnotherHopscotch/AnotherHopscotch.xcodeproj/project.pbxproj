@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B250B1B265EE70C008CE121 /* BigInt in Frameworks */ = {isa = PBXBuildFile; productRef = 1B250B1A265EE70C008CE121 /* BigInt */; };
 		1B416B2A265D59D9008AF1BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B416B29265D59D9008AF1BB /* AppDelegate.swift */; };
 		1B416B2C265D59D9008AF1BB /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1B416B2B265D59D9008AF1BB /* GameScene.sks */; };
 		1B416B30265D59D9008AF1BB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B416B2F265D59D9008AF1BB /* GameScene.swift */; };
@@ -91,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B250B1B265EE70C008CE121 /* BigInt in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +215,9 @@
 			dependencies = (
 			);
 			name = AnotherHopscotch;
+			packageProductDependencies = (
+				1B250B1A265EE70C008CE121 /* BigInt */,
+			);
 			productName = AnotherHopscotch;
 			productReference = 1B416B26265D59D9008AF1BB /* AnotherHopscotch.app */;
 			productType = "com.apple.product-type.application";
@@ -284,6 +289,9 @@
 				Base,
 			);
 			mainGroup = 1B416B1D265D59D9008AF1BB;
+			packageReferences = (
+				1B250B19265EE70C008CE121 /* XCRemoteSwiftPackageReference "BigInt" */,
+			);
 			productRefGroup = 1B416B27265D59D9008AF1BB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -674,6 +682,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1B250B19265EE70C008CE121 /* XCRemoteSwiftPackageReference "BigInt" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/attaswift/BigInt";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1B250B1A265EE70C008CE121 /* BigInt */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B250B19265EE70C008CE121 /* XCRemoteSwiftPackageReference "BigInt" */;
+			productName = BigInt;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1B416B1E265D59D9008AF1BB /* Project object */;
 }

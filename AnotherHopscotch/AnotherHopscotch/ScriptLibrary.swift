@@ -6,12 +6,13 @@
 //
 
 import Foundation
-
+import BigInt
 
 func determineMagicType(_ from: Any) -> MagicTypes {
     switch from {
     case is Void: return .void
     case is Int: return .int
+    case is BigInt: return .bigint
     case is String: return .str
     case is Double: return .float
     case is Bool: return .bool
@@ -62,6 +63,13 @@ struct Precompile {
         .functionWithParams(name: "int", parameters: .any, returnType: .int, code: { param in [
             .literal(Value(.int, Int("\(param[0])") ?? 0)),
         ]}),
+        
+        // Int Function
+        .functionWithParams(name: "bigint", parameters: .any, returnType: .int, code: { param in [
+            .literal(Value(.bigint, BigInt("\(param[0])") ?? 0)),
+        ]}),
+        
+        
         // Str Function
         .functionWithParams(name: "str", parameters: .any, returnType: .str, code: { param in [
             .literal(Value(.str, "\(param[0])")),
@@ -71,6 +79,10 @@ struct Precompile {
         .functionWithParams(name: "add", parameters: .tuple([.int, .int]), returnType: .int, code: { param in [
             .literal(Value(.int, (int(param[0]) + int(param[1])))),
         ]}),
+        .functionWithParams(name: "add", parameters: .tuple([.bigint, .bigint]), returnType: .bigint, code: { param in [
+            .literal(Value(.bigint, (param[0]as!BigInt) + (param[1]as!BigInt))),
+        ]}),
+        
         // Add Function
         .functionWithParams(name: "add", parameters: .tuple([.str, .str]), returnType: .array(.any), code: { param in [
             .literal(Value(.array(.any), (param[0] as! String) + (param[1] as! String) )),

@@ -10,7 +10,7 @@ import Foundation
 enum MagicTypes: Hashable, Equatable {
     
     indirect case array(MagicTypes)//, dict(MagicTypes:MagicTypes)
-    case int, float, str, bool, any, void
+    case int, float, str, bool, any, void, bigint
     
     indirect case tuple([MagicTypes])
     // indirect case function([MagicTypes], MagicTypes)
