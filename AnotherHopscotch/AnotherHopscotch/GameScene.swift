@@ -83,6 +83,17 @@ class GameScene: SKScene {
         }
         
         print("Loaded content.:")
+        
+        // RUN BUTTON
+        let wo = VeryMagicShape.Make(.init(width: 200, height: 100), color: .black, corner: 10)
+        addChild(wo)
+        wo.position.x = frame.width - 150
+        wo.position.y = frame.height - 100
+        wo.zPosition = 100
+        let wooo = Label.init(text: "Run!")
+        wooo.fontSize = 50
+        wooo.verticalAlignmentMode = .center
+        wo.addChild(wooo)
     }
     
     var selection: SKShapeNode!
@@ -135,7 +146,7 @@ class GameScene: SKScene {
         if superNode.position.y > massiveHeight { superNode.position.y = massiveHeight }
         if superNode.position.x < -massiveWidth { superNode.position.x = -massiveWidth }
     }
-
+    
 }
 
 
