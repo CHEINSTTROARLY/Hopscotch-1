@@ -86,7 +86,7 @@ class Block: SKNode {
         case .elseStatement: return self.attributes(.basic([.c("else")]), fromBox: fromBox)
         case let .elif(bool: b): return self.attributes(.basic([.c("elif"), .edit(b)]), fromBox: fromBox)
         case let .whileStatement(bool: b): return self.attributes(.basic([.c("while"), .edit(b)]), fromBox: fromBox)
-        case let .repeatNTimes(n: n): return self.attributes(.basic([.c("repeat"), .edit(String(n))]), fromBox: fromBox)
+        case let .repeatNTimes(n: n): return self.attributes(.basic([.c("repeat"), .edit(String(n)), .c("times")]), fromBox: fromBox)
         case let .iterate(this: t, over: o): return self.attributes(.basic([.c("for"), .edit(t), .c("in"), .edit(o)]), fromBox: fromBox)
         case let .run(n: n): return self.attributes(.basic([.c("run"), .edit(n)]), fromBox: fromBox)
         
