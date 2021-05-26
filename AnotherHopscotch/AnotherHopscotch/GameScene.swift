@@ -85,15 +85,16 @@ class GameScene: SKScene {
         print("Loaded content.:")
         
         // RUN BUTTON
-        let wo = VeryMagicShape.Make(.init(width: 200, height: 100), color: .black, corner: 10)
+        let wo = VeryMagicShape.Make(.init(width: 70, height: 50), color: .black, corner: 10)
         addChild(wo)
-        wo.position.x = frame.width - 150
-        wo.position.y = frame.height - 100
+        wo.position.x = frame.width - 95
+        wo.position.y = frame.height - 75
         wo.zPosition = 100
         let wooo = Label.init(text: "Run!")
-        wooo.fontSize = 50
+        wooo.fontSize = 32
         wooo.verticalAlignmentMode = .center
         wo.addChild(wooo)
+        wo.name = "Run"
     }
     
     var selection: SKShapeNode!
@@ -108,11 +109,16 @@ class GameScene: SKScene {
         selected = nil
         editing = nil
         
-        if let tappedBlock = nodes(at: location).first(where: { $0 is VeryMagicShape }) as? VeryMagicShape {
+        let nodesAtLocation = nodes(at: location)
+        
+        if let _ = nodesAtLocation.first(where: { $0.name == "Run" }) {
+            print("RUN THE CODE")
+            runProgram()
+        } else if let tappedBlock = nodesAtLocation.first(where: { $0 is VeryMagicShape }) as? VeryMagicShape {
             // Select an Editing Panel
             editing = tappedBlock
             selection = tappedBlock.select()
-        } else if let tappedBlock = nodes(at: location).first(where: { $0 is Block }) as? Block {
+        } else if let tappedBlock = nodesAtLocation.first(where: { $0 is Block }) as? Block {
             // Normally Select a Block
             selection?.removeFromParent()
             selected = tappedBlock
@@ -134,7 +140,6 @@ class GameScene: SKScene {
     override func mouseDragged(with event: NSEvent) {
         superNode.position.y -= (event.deltaY)*2
         superNode.position.x += (event.deltaX)*2
-        print(superNode.position)
         
         let ok = superNode.calculateAccumulatedFrame()
         let okok = frame.size
@@ -147,6 +152,28 @@ class GameScene: SKScene {
         if superNode.position.x < -massiveWidth { superNode.position.x = -massiveWidth }
     }
     
+    func runProgram() {
+        print("__________")
+        print("PROGRAM:")
+        var t = ""
+        for i in statements {
+            var textual = ""
+            for j in i.labels {
+                if j.text == "" {
+                    textual += " |"
+                } else {
+                    textual += (j.text ?? " ") + "|"
+                }
+            }
+            textual += "_ind(\(i.indentions))"
+            print(textual)
+            t += textual + "\n"
+        }
+        print("__________")
+        
+        
+        let superParse = t.parse()
+        superParse.runProgram()
+    }
+    
 }
-
-

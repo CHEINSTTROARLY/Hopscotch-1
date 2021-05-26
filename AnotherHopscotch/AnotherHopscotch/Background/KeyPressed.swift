@@ -15,21 +15,7 @@ extension GameScene {
         holdingKeys.insert(Int(event.keyCode))
         
         if event.tappedKey(.spacebar), editing == nil, selected == nil {
-            print("__________")
-            print("PROGRAM:")
-            for i in statements {
-                var textual = ""
-                for j in i.labels {
-                    if j.text == "" {
-                        textual += " |"
-                    } else {
-                        textual += (j.text ?? " ") + "|"
-                    }
-                }
-                textual += "_ind(\(i.indentions))"
-                print(textual)
-            }
-            print("__________")
+            runProgram()
         }
         
         if let selected = selected {
