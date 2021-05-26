@@ -75,6 +75,19 @@ case|bar|_ind(1)
 
 # Fibonacci
 
+```swift
+var textual =
+"""
+var|one|=|0.bigint|_ind(0)
+var|two|=|1.bigint|_ind(0)
+while|true|_ind(0)
+var|sum|=|$one.add($two)|_ind(1)
+run|print($sum)|_ind(1)
+var|one|=|$two|_ind(1)
+var|two|=|$sum|_ind(1)
+"""
+```
+
 [Click here to see the results of the program below](https://github.com/CHEINSTTROARLY/Hopscotch-1/blob/main/Proof1Fibonacci.md)
 
 ![Fibs](https://github.com/CHEINSTTROARLY/Hopscotch-1/blob/main/Fibonacci.png)
