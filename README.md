@@ -25,6 +25,15 @@ Now the porgram is runnable! Blocks that work:
 
 More TODOs:
 - implement parsing for Array, Set, Dict, Tuple, etc. `[1,2,3].arrayInt` or `[1,2,3].as([int])`
+- structs, attributes, static members, initializers, mutating methods
+- classes, attributes, static members, initializers, subclassing (`base class` vs. `sub class`), overriding methods
+- enums, cases, raw values, associated values
+- switch statements
+- UserDefaults
+
+EVEN Greater Todos:
+- SpriteKit based programming... ;)
+
 ___
 
 ![Example 1](https://github.com/CHEINSTTROARLY/Hopscotch-1/blob/main/Example1.png)
@@ -75,9 +84,26 @@ case|bar|_ind(1)
 
 # Fibonacci
 
+```swift
+var textual =
+"""
+var|one|=|0.bigint|_ind(0)
+var|two|=|1.bigint|_ind(0)
+while|true|_ind(0)
+var|sum|=|$one.add($two)|_ind(1)
+run|print($sum)|_ind(1)
+var|one|=|$two|_ind(1)
+var|two|=|$sum|_ind(1)
+"""
+```
+
 [Click here to see the results of the program below](https://github.com/CHEINSTTROARLY/Hopscotch-1/blob/main/Proof1Fibonacci.md)
 
 ![Fibs](https://github.com/CHEINSTTROARLY/Hopscotch-1/blob/main/Fibonacci.png)
 
+---
 
+# Miller Rabin Probabalistic Primality Testing
+
+Will do this next ;)
 
