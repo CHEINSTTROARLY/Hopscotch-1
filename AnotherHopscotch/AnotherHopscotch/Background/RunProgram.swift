@@ -64,7 +64,6 @@ extension Array where Element == SuperEnumCompile {
                     
                 case let .createValue(name: nameOfValue, setTo: setValueTo):
                     Main.values[nameOfValue] = exec(setValueTo)
-                    print(Main.values)
                     
                 case let .run(n: prog):
                     exec(prog)
