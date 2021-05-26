@@ -75,6 +75,7 @@ case|bar|_ind(1)
 
 # Fibonacci
 
+![Fibs](https://github.com/CHEINSTTROARLY/Hopscotch-1/blob/main/Fibonacci.png)
 
 
 
