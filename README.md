@@ -75,6 +75,8 @@ case|bar|_ind(1)
 
 # Fibonacci
 
+[Click here to see the results of the program below](https://github.com/CHEINSTTROARLY/Hopscotch-1/blob/main/Proof1Fibonacci.md)
+
 ![Fibs](https://github.com/CHEINSTTROARLY/Hopscotch-1/blob/main/Fibonacci.png)
 
 
