@@ -22,6 +22,16 @@
 		1BDADB32265D9E6D0011964A /* ParseString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB31265D9E6D0011964A /* ParseString.swift */; };
 		1BDADB34265DA4120011964A /* KeyPressed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB33265DA4120011964A /* KeyPressed.swift */; };
 		1BDADB36265DF0060011964A /* RunProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB35265DF0060011964A /* RunProgram.swift */; };
+		1BDADB38265DF2120011964A /* exec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB37265DF2120011964A /* exec.swift */; };
+		1BDADB3B265DF2350011964A /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB3A265DF2350011964A /* Value.swift */; };
+		1BDADB3D265DF2440011964A /* MagicTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB3C265DF2440011964A /* MagicTypes.swift */; };
+		1BDADB3F265DF25F0011964A /* StackCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB3E265DF25F0011964A /* StackCode.swift */; };
+		1BDADB41265DF2830011964A /* TheStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB40265DF2830011964A /* TheStack.swift */; };
+		1BDADB43265DF2B90011964A /* ResolveFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB42265DF2B90011964A /* ResolveFunctions.swift */; };
+		1BDADB45265DF2C90011964A /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB44265DF2C90011964A /* Regex.swift */; };
+		1BDADB47265DF3AE0011964A /* Equating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB46265DF3AE0011964A /* Equating.swift */; };
+		1BDADB49265DF48B0011964A /* ScriptLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB48265DF48B0011964A /* ScriptLibrary.swift */; };
+		1BDADB4B265DF4A50011964A /* SomeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB4A265DF4A50011964A /* SomeExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +74,16 @@
 		1BDADB31265D9E6D0011964A /* ParseString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseString.swift; sourceTree = "<group>"; };
 		1BDADB33265DA4120011964A /* KeyPressed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPressed.swift; sourceTree = "<group>"; };
 		1BDADB35265DF0060011964A /* RunProgram.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunProgram.swift; sourceTree = "<group>"; };
+		1BDADB37265DF2120011964A /* exec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exec.swift; sourceTree = "<group>"; };
+		1BDADB3A265DF2350011964A /* Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
+		1BDADB3C265DF2440011964A /* MagicTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicTypes.swift; sourceTree = "<group>"; };
+		1BDADB3E265DF25F0011964A /* StackCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackCode.swift; sourceTree = "<group>"; };
+		1BDADB40265DF2830011964A /* TheStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheStack.swift; sourceTree = "<group>"; };
+		1BDADB42265DF2B90011964A /* ResolveFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolveFunctions.swift; sourceTree = "<group>"; };
+		1BDADB44265DF2C90011964A /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		1BDADB46265DF3AE0011964A /* Equating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equating.swift; sourceTree = "<group>"; };
+		1BDADB48265DF48B0011964A /* ScriptLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScriptLibrary.swift; sourceTree = "<group>"; };
+		1BDADB4A265DF4A50011964A /* SomeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +137,7 @@
 				1B416B29265D59D9008AF1BB /* AppDelegate.swift */,
 				1B416B2B265D59D9008AF1BB /* GameScene.sks */,
 				1B416B2F265D59D9008AF1BB /* GameScene.swift */,
+				1BDADB39265DF2150011964A /* SwiftScript */,
 				1BDADB2A265D83A60011964A /* Background */,
 				1B416B31265D59D9008AF1BB /* ViewController.swift */,
 				1B416B33265D59DA008AF1BB /* Assets.xcassets */,
@@ -157,6 +178,23 @@
 				1BDADB35265DF0060011964A /* RunProgram.swift */,
 			);
 			path = Background;
+			sourceTree = "<group>";
+		};
+		1BDADB39265DF2150011964A /* SwiftScript */ = {
+			isa = PBXGroup;
+			children = (
+				1BDADB37265DF2120011964A /* exec.swift */,
+				1BDADB3A265DF2350011964A /* Value.swift */,
+				1BDADB3C265DF2440011964A /* MagicTypes.swift */,
+				1BDADB3E265DF25F0011964A /* StackCode.swift */,
+				1BDADB40265DF2830011964A /* TheStack.swift */,
+				1BDADB42265DF2B90011964A /* ResolveFunctions.swift */,
+				1BDADB44265DF2C90011964A /* Regex.swift */,
+				1BDADB46265DF3AE0011964A /* Equating.swift */,
+				1BDADB48265DF48B0011964A /* ScriptLibrary.swift */,
+				1BDADB4A265DF4A50011964A /* SomeExtensions.swift */,
+			);
+			name = SwiftScript;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,16 +327,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BDADB38265DF2120011964A /* exec.swift in Sources */,
 				1BDADB36265DF0060011964A /* RunProgram.swift in Sources */,
 				1BDADB30265D83E70011964A /* BlockTypes.swift in Sources */,
+				1BDADB49265DF48B0011964A /* ScriptLibrary.swift in Sources */,
+				1BDADB41265DF2830011964A /* TheStack.swift in Sources */,
 				1BDADB2C265D83C00011964A /* extensions.swift in Sources */,
 				1BDADB29265D83950011964A /* KeyCodes.swift in Sources */,
+				1BDADB4B265DF4A50011964A /* SomeExtensions.swift in Sources */,
+				1BDADB45265DF2C90011964A /* Regex.swift in Sources */,
+				1BDADB3D265DF2440011964A /* MagicTypes.swift in Sources */,
 				1B416B32265D59D9008AF1BB /* ViewController.swift in Sources */,
+				1BDADB47265DF3AE0011964A /* Equating.swift in Sources */,
+				1BDADB3F265DF25F0011964A /* StackCode.swift in Sources */,
 				1BDADB2E265D83D70011964A /* MagicShapes.swift in Sources */,
+				1BDADB43265DF2B90011964A /* ResolveFunctions.swift in Sources */,
 				1B416B30265D59D9008AF1BB /* GameScene.swift in Sources */,
 				1BDADB34265DA4120011964A /* KeyPressed.swift in Sources */,
 				1BDADB32265D9E6D0011964A /* ParseString.swift in Sources */,
 				1B416B2A265D59D9008AF1BB /* AppDelegate.swift in Sources */,
+				1BDADB3B265DF2350011964A /* Value.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
