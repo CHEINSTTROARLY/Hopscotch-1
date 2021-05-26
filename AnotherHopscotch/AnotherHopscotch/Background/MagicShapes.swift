@@ -172,6 +172,7 @@ class Block: SKNode {
         updatedBox.position.y = position.y
         updatedBox.position.x = calculateAccumulatedFrame().minX + (updatedBox.calculateAccumulatedFrame().width/2)
         updatedBox.item = item
+        updatedBox.indentions = indentions
         return updatedBox
     }
     
