@@ -11,6 +11,13 @@ import GameplayKit
 
 var textual =
 """
+var|foo|=|0.int|_ind(0)
+while|true|_ind(0)
+run|set(foo,$foo.add(1.int))|_ind(1)
+run|print($foo)|_ind(1)
+if|get(foo).equals(10000.int)|_ind(1)
+break|_ind(2)
+none|_ind(0)
 run|foo += 1|_ind(0)
 if|true|_ind(0)
 run|print(Hello World!)|_ind(1)
@@ -57,6 +64,10 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         backgroundColor = .white
         addChild(superNode)
+        
+//        for i in 1...10000 {
+//            print(i)
+//        }
         
         statements = []
         let woo = textual.parse()

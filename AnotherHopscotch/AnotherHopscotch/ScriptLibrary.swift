@@ -81,6 +81,11 @@ struct Precompile {
         ]}),
         
         
+        // Add Function
+        .functionWithParams(name: "equals", parameters: .tuple([.any, .any]), returnType: .bool, code: { param in [
+            .literal(Value(.bool, ((Value(.any, param[0]) == (param[1]))))),
+        ]}),
+        
         // Neg Function
         .functionWithParams(name: "neg", parameters: .int, returnType: .int, code: { param in [
             .literal(Value(.int, -int(param[0]))),

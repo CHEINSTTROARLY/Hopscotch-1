@@ -57,16 +57,20 @@ extension Array where Element == CodeList.Element {
 extension Array where Element == SuperEnumCompile {
     
     
-    func runEnum() -> (continue: Bool, break: Bool) {
+    func runEnum() -> (break: Bool, continue: Bool) {
         var stillCheckIfStatements = true
         
         mainLoop: for i in self {
             switch i {
             case let .this(blockType, contains: enums):
                 switch blockType {
-                case .none: return (false, false)
-                case .continuer: return (true, false)
-                case .breaker: return (false, true)
+                case .none: continue mainLoop
+                case .continuer: return (false, true)
+                case .breaker: return (true, false)
+                    
+                case let .createValue(name: nameOfValue, setTo: setValueTo):
+                    Main.values[nameOfValue] = exec(setValueTo)
+                    print(Main.values)
                     
                 case let .run(n: prog):
                     exec(prog)
@@ -77,7 +81,7 @@ extension Array where Element == SuperEnumCompile {
                     let expression = exec(booleanExpression)
                     if expression == true {
                         stillCheckIfStatements = false
-                        enums.runEnum()
+                        return enums.runEnum()
                     } else if expression == false {
                         continue
                     } else {
@@ -90,7 +94,7 @@ extension Array where Element == SuperEnumCompile {
                     let expression = exec(booleanExpression)
                     if expression == true {
                         stillCheckIfStatements = false
-                        enums.runEnum()
+                        return enums.runEnum()
                     } else if expression == false {
                         continue
                     } else {
@@ -99,12 +103,14 @@ extension Array where Element == SuperEnumCompile {
                     
                 case .elseStatement:
                     if !stillCheckIfStatements { continue }
-                    enums.runEnum()
+                    return enums.runEnum()
                     
                     
                 case let .whileStatement(bool: booleanExpression):
                     while exec(booleanExpression) == true {
-                        let foo = runEnum()
+                        let foo = enums.runEnum()
+                        if foo.continue { continue }
+                        if foo.break { break }
                     }
                 
                 default:
