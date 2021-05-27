@@ -49,9 +49,9 @@ struct Precompile {
     static var preProgram: [StackCode] = [
         
         // SET FUNCTION
-        .functionWithParams(name: "set", parameters: .any, returnType: .int, code: { param in [
-            .program({ Main.values["\(param[0])"] = Value.init(determineMagicType(param[1]), param[1]) }),
-        ]}),
+//        .functionWithParams(name: "set", parameters: .any, returnType: .int, code: { param in [
+//            .program({ Main.values["\(param[0])"] = Value.init(determineMagicType(param[1]), param[1]) }),
+//        ]}),
         
         // GET
         .functionWithParams(name: "get", parameters: .any, returnType: .any, code: { param in [

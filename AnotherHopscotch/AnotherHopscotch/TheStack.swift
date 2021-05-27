@@ -28,10 +28,11 @@ class Main {
     static func findFunction(name: String, paramType: MagicTypes) -> FunctionType? {
         if let foo = structures[name] {
             return foo.initializer
-        } else if let foo = structures[paramType.firstString()]?.functions[name] {
-            return foo
+        } else if let foo = structures[paramType.firstString()] {
+            if let ao = foo.functions[name] {
+                return ao
+            }
         }
-        
         return functions[name]?.first(where: { $0.parameters == paramType })
     }
     

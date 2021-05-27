@@ -74,7 +74,13 @@ extension Array where Element == StackCode {
                 }
                 let results = realStuff.map { $0.value }
                 
-                if let found = Main.findFunction(name: nam, paramType: givenParamType) {
+                if nam == "set" {
+                    realStuff[0].value = realStuff[1].value
+                    
+                } else if let foo = Main.structures[givenParamType.firstString()], nam.hasPrefix("$"), case var n = nam {
+                    n.removeFirst()
+                    return realStuff[0].storedValues[n] ?? Value(.void, ())
+                } else if let found = Main.findFunction(name: nam, paramType: givenParamType) {
                     
                     if found.parameters != givenParamType {
                         print("Expected Parameters \(found.parameters). Instead, recieved: \(givenParamType)")

@@ -11,7 +11,7 @@ import BigInt
 struct CustomStructType {
     var name: String
     var functions: [String:FunctionType] = [:]
-    var values: [String:Value] = [:] // TODO: values (& static values?)
+    var values: [String:()->Value] = [:] // TODO: values (& static values?)
     var initializer: FunctionType
     
     static let prebuiltObjects: [String:CustomStructType] = [
@@ -51,7 +51,9 @@ struct CustomStructType {
                     .literal(Value(.int, Prime.turn_into_palindrome(int(param[0])))),
                 ]}),
             ],
-            values: [:],
+            values: [
+                "foo":{Value(.bool, true)}
+            ],
             initializer: // Int Function
                 (parameters: .any, returnType: .int, code: { param in [
                     .literal(Value(.int, Int("\(param[0])") ?? 0)),

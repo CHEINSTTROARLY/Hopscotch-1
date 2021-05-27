@@ -17,6 +17,7 @@
 		1B416B37265D59DA008AF1BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B416B35265D59DA008AF1BB /* Main.storyboard */; };
 		1B416B43265D59DB008AF1BB /* AnotherHopscotchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B416B42265D59DB008AF1BB /* AnotherHopscotchTests.swift */; };
 		1B416B4E265D59DB008AF1BB /* AnotherHopscotchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B416B4D265D59DB008AF1BB /* AnotherHopscotchUITests.swift */; };
+		1B72BC802660383A00AC5510 /* CodeToCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B72BC7F2660383A00AC5510 /* CodeToCode.swift */; };
 		1B819754265FFF7900E71A14 /* CustomStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B819753265FFF7900E71A14 /* CustomStruct.swift */; };
 		1BDADB29265D83950011964A /* KeyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB28265D83950011964A /* KeyCodes.swift */; };
 		1BDADB2C265D83C00011964A /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB2B265D83C00011964A /* extensions.swift */; };
@@ -71,6 +72,7 @@
 		1B416B49265D59DB008AF1BB /* AnotherHopscotchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnotherHopscotchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B416B4D265D59DB008AF1BB /* AnotherHopscotchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherHopscotchUITests.swift; sourceTree = "<group>"; };
 		1B416B4F265D59DB008AF1BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B72BC7F2660383A00AC5510 /* CodeToCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeToCode.swift; sourceTree = "<group>"; };
 		1B819753265FFF7900E71A14 /* CustomStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStruct.swift; sourceTree = "<group>"; };
 		1BDADB28265D83950011964A /* KeyCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCodes.swift; sourceTree = "<group>"; };
 		1BDADB2B265D83C00011964A /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				1B416B29265D59D9008AF1BB /* AppDelegate.swift */,
 				1B416B2B265D59D9008AF1BB /* GameScene.sks */,
 				1B416B2F265D59D9008AF1BB /* GameScene.swift */,
+				1B72BC7F2660383A00AC5510 /* CodeToCode.swift */,
 				1B250B1E265EF589008CE121 /* ImportCode */,
 				1BDADB39265DF2150011964A /* SwiftScript */,
 				1BDADB2A265D83A60011964A /* Background */,
@@ -355,6 +358,7 @@
 				1BDADB49265DF48B0011964A /* ScriptLibrary.swift in Sources */,
 				1BDADB41265DF2830011964A /* TheStack.swift in Sources */,
 				1BDADB2C265D83C00011964A /* extensions.swift in Sources */,
+				1B72BC802660383A00AC5510 /* CodeToCode.swift in Sources */,
 				1BDADB29265D83950011964A /* KeyCodes.swift in Sources */,
 				1BDADB4B265DF4A50011964A /* SomeExtensions.swift in Sources */,
 				1BDADB45265DF2C90011964A /* Regex.swift in Sources */,
