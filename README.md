@@ -118,3 +118,68 @@ var|two|=|$sum|_ind(1)
 
 Will do this next ;)
 
+---
+
+printSwiftCode()
+
+Wouldn't it be cool if the project could just print out Swift code !? YEah!? Yeah!?
+
+---
+SpriteKit Transformations
+
+class SKNode
+- var children: [SKNode] = []
+- func addChild(SKNode)
+- func childNode(withName: String) -> SKNode
+- alpha: CGFloat = 1
+- xScale: CGFloat = 1
+- yScale: CGFloat = 1
+- setScale(_ to: CGFloat)
+- frame() -> CGRect
+- calculateAccumuatedFrame() -> CGRect
+- var parent: SKNode?
+- func removeFromParent()
+- func removeAllChildren()
+- var zRotation: CGFloat = 0
+- var zPosition: CGFloat = 0
+- var physicsBody: SKPhysicsBody?
+- func run(_ action: SKAction)
+- var position: CGPoint = .zero
+
+Future Objects
+- struct CGFloat
+- struct CGRect
+- struct CGPoint
+- struct CGVector
+- struct SKAction
+- class SKPhysicsBody
+- class SKSpriteNode: SKNode
+- class SKLabelNode: SKNode
+- class SKShapeNode: SKNode
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
