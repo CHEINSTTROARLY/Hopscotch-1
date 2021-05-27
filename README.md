@@ -141,6 +141,18 @@ var|two|=|$sum|_ind(1)
 ![Fibs](https://github.com/CHEINSTTROARLY/Hopscotch-1/blob/main/Fibonacci.png)
 
 ---
+# Factorial
+
+```swift
+"""
+for|i|in|range(1.int,1000.int)|_ind(0)
+run|print($i, triangle($i.int).bigprod)|_ind(1)
+"""
+```
+
+[Click here to see the results of the factorial program](https://github.com/CHEINSTTROARLY/Hopscotch-1/blob/main/Factorial.md)
+
+---
 
 # Miller Rabin Probabalistic Primality Testing
 
