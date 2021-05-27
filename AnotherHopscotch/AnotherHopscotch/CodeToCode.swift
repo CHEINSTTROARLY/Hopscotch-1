@@ -10,6 +10,9 @@ import Foundation
 
 var textual =
 """
+run|print(arrayint(111111111111111111,111111111111111111).bigprod)|_ind(0)
+run|print(arrayint(111111111,111111111).bigprod)|_ind(0)
+run|print(arrayint(111111111,111111111).prod)|_ind(0)
 run|print(true.bool.not.not.not)|_ind(0)
 run|print(-1.0)|_ind(0)
 run|print(1.0.add(2.0))|_ind(0)

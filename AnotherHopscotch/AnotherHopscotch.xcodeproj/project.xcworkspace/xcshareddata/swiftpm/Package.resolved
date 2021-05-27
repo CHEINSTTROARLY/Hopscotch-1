@@ -9,6 +9,15 @@
           "revision": "889a1ecacd73ccc189c5cb29288048f186c44ed9",
           "version": "5.2.1"
         }
+      },
+      {
+        "package": "master-kit",
+        "repositoryURL": "https://github.com/JonnyGamer/MasterKit.git",
+        "state": {
+          "branch": null,
+          "revision": "995527c2cbcd48664eab0a38916059c3d7e9aef0",
+          "version": "0.0.2"
+        }
       }
     ]
   },

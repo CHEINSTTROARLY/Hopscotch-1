@@ -18,6 +18,7 @@
 		1B416B43265D59DB008AF1BB /* AnotherHopscotchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B416B42265D59DB008AF1BB /* AnotherHopscotchTests.swift */; };
 		1B416B4E265D59DB008AF1BB /* AnotherHopscotchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B416B4D265D59DB008AF1BB /* AnotherHopscotchUITests.swift */; };
 		1B72BC802660383A00AC5510 /* CodeToCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B72BC7F2660383A00AC5510 /* CodeToCode.swift */; };
+		1B72BC8426604D5500AC5510 /* MasterKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1B72BC8326604D5500AC5510 /* MasterKit */; };
 		1B819754265FFF7900E71A14 /* CustomStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B819753265FFF7900E71A14 /* CustomStruct.swift */; };
 		1BDADB29265D83950011964A /* KeyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB28265D83950011964A /* KeyCodes.swift */; };
 		1BDADB2C265D83C00011964A /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB2B265D83C00011964A /* extensions.swift */; };
@@ -99,6 +100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B250B1B265EE70C008CE121 /* BigInt in Frameworks */,
+				1B72BC8426604D5500AC5510 /* MasterKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -134,6 +136,7 @@
 				1B416B41265D59DB008AF1BB /* AnotherHopscotchTests */,
 				1B416B4C265D59DB008AF1BB /* AnotherHopscotchUITests */,
 				1B416B27265D59D9008AF1BB /* Products */,
+				1B72BC8226604D5500AC5510 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,6 +185,13 @@
 				1B416B4F265D59DB008AF1BB /* Info.plist */,
 			);
 			path = AnotherHopscotchUITests;
+			sourceTree = "<group>";
+		};
+		1B72BC8226604D5500AC5510 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		1BDADB2A265D83A60011964A /* Background */ = {
@@ -234,6 +244,7 @@
 			name = AnotherHopscotch;
 			packageProductDependencies = (
 				1B250B1A265EE70C008CE121 /* BigInt */,
+				1B72BC8326604D5500AC5510 /* MasterKit */,
 			);
 			productName = AnotherHopscotch;
 			productReference = 1B416B26265D59D9008AF1BB /* AnotherHopscotch.app */;
@@ -308,6 +319,7 @@
 			mainGroup = 1B416B1D265D59D9008AF1BB;
 			packageReferences = (
 				1B250B19265EE70C008CE121 /* XCRemoteSwiftPackageReference "BigInt" */,
+				1B72BC8126604D4500AC5510 /* XCRemoteSwiftPackageReference "MasterKit" */,
 			);
 			productRefGroup = 1B416B27265D59D9008AF1BB /* Products */;
 			projectDirPath = "";
@@ -712,6 +724,14 @@
 				minimumVersion = 5.2.1;
 			};
 		};
+		1B72BC8126604D4500AC5510 /* XCRemoteSwiftPackageReference "MasterKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonnyGamer/MasterKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -719,6 +739,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1B250B19265EE70C008CE121 /* XCRemoteSwiftPackageReference "BigInt" */;
 			productName = BigInt;
+		};
+		1B72BC8326604D5500AC5510 /* MasterKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B72BC8126604D4500AC5510 /* XCRemoteSwiftPackageReference "MasterKit" */;
+			productName = MasterKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

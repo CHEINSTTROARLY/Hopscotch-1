@@ -7,6 +7,13 @@
 
 import Foundation
 import BigInt
+import MasterKit
+
+extension Array {
+    func turnToString() -> String {
+        return "[" + self.reduce("") { $0 + "\($1)" + "," } + "]"
+    }
+}
 
 func determineMagicType(_ from: Any) -> MagicTypes {
     switch from {
@@ -75,7 +82,15 @@ struct Precompile {
         
         
         
-        // Reversed
+        .functionWithParams(name: "array", parameters: .array(.any), returnType: .array(.any), code: { param in [
+            .literal(Value(.array(.str), param)),
+        ]}),
+        .functionWithParams(name: "arrayint", parameters: .any, returnType: .array(.int), code: { param in [
+            .literal(Value(.array(.int), Array<Int>(param.turnToString()) ?? [])),
+        ]}),
+        .functionWithParams(name: "arraybigint", parameters: .any, returnType: .array(.bigint), code: { param in [
+            .literal(Value(.array(.bigint), (Array<Int>(param.turnToString()) ?? []).map { BigInt($0) })),
+        ]}),
         
         
         
@@ -84,16 +99,21 @@ struct Precompile {
         .functionWithParams(name: "sum", parameters: .array(.int), returnType: .int, code: { param in [
             .literal(Value(.int, (param[0] as! [Int]).reduce(0, { $0 + int($1) }) )),
         ]}),
+        // Product function
+        .functionWithParams(name: "prod", parameters: .array(.int), returnType: .int, code: { param in [
+            .literal(Value(.int, (param[0] as! [Int]).reduce(1, { $0 * int($1) }) )),
+        ]}),
+        // Product function
+        .functionWithParams(name: "bigprod", parameters: .array(.int), returnType: .int, code: { param in [
+            .literal(Value(.bigint, (param[0] as! [Int]).reduce(BigInt(1), { $0 * BigInt(int($1)) }) )),
+        ]}),
+        .functionWithParams(name: "bigprod", parameters: .array(.bigint), returnType: .int, code: { param in [
+            .literal(Value(.bigint, (param[0] as! [BigInt]).reduce(BigInt(1), { $0 * (($1)) }) )),
+        ]}),
         
         // Len Function
         .functionWithParams(name: "len", parameters: .array(.any), returnType: .int, code: { param in [
             .literal(Value(.int, (param[0] as! [Any]).count )),
-        ]}),
-        
-        
-        // Triangle Number Function
-        .functionWithParams(name: "triangle", parameters: .int, returnType: .array(.int), code: { param in [
-            .literal(Value(.array(.int), Array(1...int(param[0]))))
         ]}),
         
         // Print Function

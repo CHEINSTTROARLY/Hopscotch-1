@@ -50,6 +50,9 @@ struct CustomStructType {
                 "palin":(parameters: .int, returnType: .int, code: { param in [
                     .literal(Value(.int, Prime.turn_into_palindrome(int(param[0])))),
                 ]}),
+                "triangle":(parameters: .int, returnType: .array(.int), code: { param in [
+                    .literal(Value(.array(.int), Array(1...int(param[0]))))
+                ]}),
             ],
             values: [
                 "foo":{Value(.bool, true)}
