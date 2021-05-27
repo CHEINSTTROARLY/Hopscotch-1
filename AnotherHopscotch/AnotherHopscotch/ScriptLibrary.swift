@@ -58,11 +58,6 @@ struct Precompile {
             .literal(Main.values["\(param[0])"] ?? Value(.str, "<None>"))
         ]}),
         
-        
-        
-        
-
-        
         // Add Function
         .functionWithParams(name: "add", parameters: .tuple([.array(.any), .array(.any)]), returnType: .array(.any), code: { param in [
             .literal(Value(.array(.any), (param[0] as! Array<Any>) + (param[1] as! Array<Any>))),

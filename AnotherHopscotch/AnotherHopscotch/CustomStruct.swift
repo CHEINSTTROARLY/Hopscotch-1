@@ -111,8 +111,8 @@ struct CustomStructType {
         "str": CustomStructType(
             name: "str",
             functions: [
-                "add":(parameters: .tuple([.str, .str]), returnType: .array(.any), code: { param in [
-                    .literal(Value(.array(.any), (param[0] as! String) + (param[1] as! String) )),
+                "add":(parameters: .tuple([.str, .str]), returnType: .str, code: { param in [
+                    .literal(Value(.str, (param[0] as! String) + (param[1] as! String) )),
                 ]}),
                 "len":(parameters: .str, returnType: .int, code: { param in [
                     .literal(Value(.int, (param[0] as! String).count )),
@@ -128,6 +128,27 @@ struct CustomStructType {
             initializer:
                 (parameters: .any, returnType: .str, code: { param in [
                     .literal(Value(.str, "\(param[0])")),
+                ]})
+        ),
+        
+        // String Object
+        "bool": CustomStructType(
+            name: "bool",
+            functions: [
+                "and":(parameters: .tuple([.bool, .bool]), returnType: .bool, code: { param in [
+                    .literal(Value(.bool, (param[0] as! Bool) && (param[1] as! Bool) )),
+                ]}),
+                "or":(parameters: .tuple([.bool, .bool]), returnType: .bool, code: { param in [
+                    .literal(Value(.bool, (param[0] as! Bool) || (param[1] as! Bool) )),
+                ]}),
+                "not":(parameters: .bool, returnType: .bool, code: { param in [
+                    .literal(Value(.bool, !(param[0] as! Bool) )),
+                ]}),
+            ],
+            values: [:],
+            initializer:
+                (parameters: .any, returnType: .bool, code: { param in [
+                    .literal(Value(.bool, Bool.init("\(param[0])") ?? false)),
                 ]})
         )
     
