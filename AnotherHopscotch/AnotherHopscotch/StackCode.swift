@@ -75,7 +75,7 @@ extension Array where Element == StackCode {
                 let results = realStuff.map { $0.value }
                 
                 if nam == "set" {
-                    realStuff[0].value = realStuff[1].value
+                    realStuff[0].value = realStuff[1].value // class mobile code ;)
                     
                 } else if let foo = Main.structures[givenParamType.firstString()], nam.hasPrefix("$"), case var n = nam {
                     n.removeFirst()
