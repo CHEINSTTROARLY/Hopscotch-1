@@ -43,7 +43,7 @@ Now, instead of all functions being global and in the same place, I've created s
 i.e. `int` is now an object. int also contains it's own private functions. Function lookup is now much faster.
 
 TODO: Variables for Structs, Generic Structs, DIY Custom Structs  
-TODO: `"string"` for strings? So that literals can be inferred?? or nah... ?
+TODO: `"string"` for strings? So that literals can be inferred?? or nah... ? For now, all types are inferred as string. Unless you say `int(100)` then it converts to int.
 
 ___
 
