@@ -11,10 +11,12 @@ import BigInt
 struct CustomStructType {
     var name: String
     var functions: [String:FunctionType] = [:]
-    var values: [String:Value] = [:]
+    var values: [String:Value] = [:] // TODO: values (& static values?)
     var initializer: FunctionType
     
     static let prebuiltObjects: [String:CustomStructType] = [
+        
+        // Int Object
         "int": CustomStructType(
             name: "int",
             functions: [
@@ -56,6 +58,7 @@ struct CustomStructType {
                 ]})
         ),
         
+        // BigInt Object
         "bigint": CustomStructType(
             name: "bigint",
             functions: [
@@ -98,6 +101,31 @@ struct CustomStructType {
             initializer:
                 (parameters: .any, returnType: .int, code: { param in [
                     .literal(Value(.bigint, BigInt("\(param[0])") ?? 0)),
+                ]})
+        ),
+        
+        
+        // String Object
+        "str": CustomStructType(
+            name: "str",
+            functions: [
+                "add":(parameters: .tuple([.str, .str]), returnType: .array(.any), code: { param in [
+                    .literal(Value(.array(.any), (param[0] as! String) + (param[1] as! String) )),
+                ]}),
+                "len":(parameters: .str, returnType: .int, code: { param in [
+                    .literal(Value(.int, (param[0] as! String).count )),
+                ]}),
+                "count":(parameters: .str, returnType: .int, code: { param in [
+                    .literal(Value(.int, (param[0] as! String).count )),
+                ]}),
+                "rev":(parameters: .str, returnType: .str, code: { param in [
+                    .literal(Value(.str, (param[0] as! String).reversed().reduce("") { $0 + String($1) } )),
+                ]}),
+            ],
+            values: [:],
+            initializer:
+                (parameters: .any, returnType: .str, code: { param in [
+                    .literal(Value(.str, "\(param[0])")),
                 ]})
         )
     

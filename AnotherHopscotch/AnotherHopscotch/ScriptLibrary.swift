@@ -59,16 +59,10 @@ struct Precompile {
         ]}),
         
         
-        // Str Function
-        .functionWithParams(name: "str", parameters: .any, returnType: .str, code: { param in [
-            .literal(Value(.str, "\(param[0])")),
-        ]}),
+        
         
 
-        // Add Function
-        .functionWithParams(name: "add", parameters: .tuple([.str, .str]), returnType: .array(.any), code: { param in [
-            .literal(Value(.array(.any), (param[0] as! String) + (param[1] as! String) )),
-        ]}),
+        
         // Add Function
         .functionWithParams(name: "add", parameters: .tuple([.array(.any), .array(.any)]), returnType: .array(.any), code: { param in [
             .literal(Value(.array(.any), (param[0] as! Array<Any>) + (param[1] as! Array<Any>))),
@@ -99,10 +93,6 @@ struct Precompile {
         // Len Function
         .functionWithParams(name: "len", parameters: .array(.any), returnType: .int, code: { param in [
             .literal(Value(.int, (param[0] as! [Any]).count )),
-        ]}),
-        // Len Function
-        .functionWithParams(name: "len", parameters: .str, returnType: .int, code: { param in [
-            .literal(Value(.int, (param[0] as! String).count )),
         ]}),
         
         

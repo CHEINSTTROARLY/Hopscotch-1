@@ -11,6 +11,9 @@ import Foundation
 func int(_ n: Any) -> Int {
     return Int("\(n)")!
 }
+func str(_ n: Any) -> String {
+    return "\(n)"
+}
 
 // Extremely Magical Printing
 func magicPrint(_ this: [Any], testing: Bool = false) {

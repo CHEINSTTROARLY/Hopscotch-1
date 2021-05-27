@@ -12,6 +12,7 @@ var textual =
 """
 run|print(int(1).inc)|_ind(0)
 run|print(100000000000000001.bigint.nextprime)|_ind(0)
+run|print(100101.rev)|_ind(0)
 """
 //struct|Foo|_ind(0)
 //var|foo|=|0.int|_ind(1)
