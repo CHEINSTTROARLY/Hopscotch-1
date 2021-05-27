@@ -10,6 +10,8 @@ import Foundation
 
 var textual =
 """
+for|i|in|range(1.int,1000.int)|_ind(0)
+run|print($i, triangle($i.int).bigprod)|_ind(1)
 run|print(arrayint(111111111111111111,111111111111111111).bigprod)|_ind(0)
 run|print(arrayint(111111111,111111111).bigprod)|_ind(0)
 run|print(arrayint(111111111,111111111).prod)|_ind(0)
