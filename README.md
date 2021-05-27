@@ -34,6 +34,17 @@ More TODOs:
 EVEN Greater Todos:
 - SpriteKit based programming... ;)
 
+---
+
+5.27.2021
+
+Now, instead of all functions being global and in the same place, I've created some behind-the-scenes data types
+
+i.e. `int` is now an object. int also contains it's own private functions. Function lookup is now much faster.
+
+TODO: Variables for Structs, Generic Structs, DIY Custom Structs  
+TODO: `"string"` for strings? So that literals can be inferred?? or nah... ? For now, all types are inferred as string. Unless you say `int(100)` then it converts to int.
+
 ___
 
 ![Example 1](https://github.com/CHEINSTTROARLY/Hopscotch-1/blob/main/Example1.png)
@@ -106,4 +117,69 @@ var|two|=|$sum|_ind(1)
 # Miller Rabin Probabalistic Primality Testing
 
 Will do this next ;)
+
+---
+
+printSwiftCode()
+
+Wouldn't it be cool if the project could just print out Swift code !? YEah!? Yeah!?
+
+---
+SpriteKit Transformations
+
+class SKNode
+- var children: [SKNode] = []
+- func addChild(SKNode)
+- func childNode(withName: String) -> SKNode?
+- alpha: CGFloat = 1
+- xScale: CGFloat = 1
+- yScale: CGFloat = 1
+- setScale(_ to: CGFloat)
+- frame() -> CGRect
+- func calculateAccumuatedFrame() -> CGRect
+- func parent() -> SKNode?
+- func removeFromParent()
+- func removeAllChildren()
+- var zRotation: CGFloat = 0
+- var zPosition: CGFloat = 0
+- var physicsBody: SKPhysicsBody?
+- func run(_ action: SKAction, withKey: String, completionHandler: () -> ())
+- var position: CGPoint = .zero
+
+Future Objects
+- struct CGFloat
+- struct CGRect
+- struct CGPoint
+- struct CGVector
+- struct SKAction
+- class SKPhysicsBody
+- class SKSpriteNode: SKNode
+- class SKLabelNode: SKNode
+- class SKShapeNode: SKNode
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
