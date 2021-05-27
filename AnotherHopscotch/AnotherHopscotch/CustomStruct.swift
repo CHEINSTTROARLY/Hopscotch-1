@@ -60,6 +60,36 @@ struct CustomStructType {
                 ]})
         ),
         
+        // Float Object
+        "float": CustomStructType(
+            name: "float",
+            functions: [
+                "add":(parameters: .tuple([.float, .any]), returnType: .float, code: { param in
+                    return [.literal(Value(.float, (float(param[0]) + float(param[1]))))]
+                }),
+                "sub":(parameters: .tuple([.float, .any]), returnType: .float, code: { param in
+                    return [.literal(Value(.float, (float(param[0]) - float(param[1]))))]
+                }),
+                "times":(parameters: .tuple([.float, .any]), returnType: .float, code: { param in
+                    return [.literal(Value(.float, (float(param[0]) * float(param[1]))))]
+                }),
+                "div":(parameters: .tuple([.float, .any]), returnType: .float, code: { param in
+                    return [.literal(Value(.float, (float(param[0]) / float(param[1]))))]
+                }),
+                "mod":(parameters: .tuple([.float, .any]), returnType: .float, code: { param in
+                    return [.literal(Value(.float, (float(param[0]).truncatingRemainder(dividingBy: float(param[1])))))]
+                }),
+                "pow":(parameters: .tuple([.float, .any]), returnType: .float, code: { param in
+                    return [.literal(Value(.float, (pow((float(param[0])), (float(param[1]))))))]
+                }),
+            ],
+            values: [:],
+            initializer: // Int Function
+                (parameters: .any, returnType: .float, code: { param in [
+                    .literal(Value(.float, Double("\(param[0])") ?? 0)),
+                ]})
+        ),
+        
         // BigInt Object
         "bigint": CustomStructType(
             name: "bigint",

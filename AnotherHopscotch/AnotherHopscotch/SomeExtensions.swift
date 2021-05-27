@@ -8,6 +8,9 @@
 import Foundation
 
 //extension String { var int: Int { return Int(self)! } }
+func float(_ n: Any) -> Double {
+    return Double("\(n)")!
+}
 func int(_ n: Any) -> Int {
     return Int("\(n)")!
 }

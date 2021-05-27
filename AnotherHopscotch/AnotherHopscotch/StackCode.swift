@@ -104,6 +104,12 @@ extension Array where Element == StackCode {
                         oo += 1
                     }
                     
+                    // Double check if the `.` was for a float literal like 1.0
+                    let testForFloat = "\(param.run().value)" + "." + nam
+                    if let fl = Double(testForFloat) {
+                        return Value(.float, fl)
+                    }
+                    
                     return Main.customFunctions[nam]?.runEnum().returnedValue ?? Value(.void, ())
                 }
                 
