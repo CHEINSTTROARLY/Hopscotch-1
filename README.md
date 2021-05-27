@@ -1,6 +1,34 @@
 # Hopscotch-1
 So A Clone of Hopscotch
 
+---
+# Update as of 5.27.2021
+
+So the project is runnable now.
+
+List of features:
+- a run block that regexes whatever it is that you typed
+- functions for simple data types: bool, int, float, string, bigint
+- variables
+- if, else, elif
+- for loops, while loops, repeat n times
+- continue, break
+- runnable functions, parameters, return types: `1.add(1)` gets auto transformed to `add(1, 1)`
+- basic classes, with mutable attributes (pass by reference)
+
+Coming features
+- Labelled control flow, nested continues, nested breaks
+- build your own class
+- subclasses
+- structs
+- build your own structs
+- enums
+- build your own enums
+- Persisting user data using UserDefaults
+- SpriteKit objects, presentable spritekit
+
+---
+
 Tried to add as many features as I could. I will very soon implement my `exec` function that I created.
 
 Projects are not runnable yet. That's the easy part, though. The hard part was making this UI. Users can actually mutate the text surrounded by white. That was most tricky to make.
