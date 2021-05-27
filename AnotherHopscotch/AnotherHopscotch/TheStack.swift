@@ -11,43 +11,6 @@ typealias FunctionType = (parameters: MagicTypes, returnType: MagicTypes, code: 
 //typealias ValueType = (typeOf: MagicTypes, value: Any)
 
 
-struct CustomStructType {
-    var name: String
-    var functions: [String:FunctionType] = [:]
-    var values: [String:Value] = [:]
-    var initializer: FunctionType
-    
-    static let prebuiltObjects: [String:CustomStructType] = [
-        "int": CustomStructType(
-            name: "int",
-            functions: [
-                "add":(parameters: .tuple([.int, .int]), returnType: .int, code: { param in
-                    return [.literal(Value(.int, (int(param[0]) + int(param[1]))))]
-                }),
-                "sub":(parameters: .tuple([.int, .int]), returnType: .int, code: { param in
-                    return [.literal(Value(.int, (int(param[0]) - int(param[1]))))]
-                }),
-                "times":(parameters: .tuple([.int, .int]), returnType: .int, code: { param in
-                    return [.literal(Value(.int, (int(param[0]) * int(param[1]))))]
-                }),
-                "div":(parameters: .tuple([.int, .int]), returnType: .int, code: { param in
-                    return [.literal(Value(.int, (int(param[0]) / int(param[1]))))]
-                }),
-                "inc":(parameters: .int, returnType: .int, code: { param in
-                    return [.literal(Value(.int, (int(param[0]) + 1)))]
-                })
-            ],
-            values: [:],
-            initializer: // Int Function
-                (parameters: .any, returnType: .int, code: { param in [
-                    .literal(Value(.int, Int("\(param[0])") ?? 0)),
-                ]})
-        )
-    
-    ]
-}
-
-
 class Main {
     static func reset() {
         Main.structures = CustomStructType.prebuiltObjects

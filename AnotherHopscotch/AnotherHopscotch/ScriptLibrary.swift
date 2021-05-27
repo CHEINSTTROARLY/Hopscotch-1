@@ -59,26 +59,12 @@ struct Precompile {
         ]}),
         
         
-        
-        // Int Function
-        .functionWithParams(name: "bigint", parameters: .any, returnType: .int, code: { param in [
-            .literal(Value(.bigint, BigInt("\(param[0])") ?? 0)),
-        ]}),
-        
-        
         // Str Function
         .functionWithParams(name: "str", parameters: .any, returnType: .str, code: { param in [
             .literal(Value(.str, "\(param[0])")),
         ]}),
         
-        // Add Function
-        .functionWithParams(name: "add", parameters: .tuple([.int, .int]), returnType: .int, code: { param in [
-            .literal(Value(.int, (int(param[0]) + int(param[1])))),
-        ]}),
-        .functionWithParams(name: "add", parameters: .tuple([.bigint, .bigint]), returnType: .bigint, code: { param in [
-            .literal(Value(.bigint, (param[0]as!BigInt) + (param[1]as!BigInt))),
-        ]}),
-        
+
         // Add Function
         .functionWithParams(name: "add", parameters: .tuple([.str, .str]), returnType: .array(.any), code: { param in [
             .literal(Value(.array(.any), (param[0] as! String) + (param[1] as! String) )),
@@ -98,44 +84,11 @@ struct Precompile {
             .literal(Value(.array(.int), Array(int(param[0])...int(param[1])))),
         ]}),
         
-        // Neg Function
-        .functionWithParams(name: "neg", parameters: .int, returnType: .int, code: { param in [
-            .literal(Value(.int, -int(param[0]))),
-        ]}),
+        
         
         // Reversed
-        .functionWithParams(name: "rev", parameters: .int, returnType: .int, code: { param in [
-            .literal(Value(.int, Prime.inverse_number(int(param[0])))),
-        ]}),
-        // Reversed
-        .functionWithParams(name: "rev", parameters: .bigint, returnType: .bigint, code: { param in [
-            .literal(Value(.bigint, Prime.inverse_number((param[0]as!BigInt)))),
-        ]}),
-        // Palindromed
-        .functionWithParams(name: "palin", parameters: .int, returnType: .int, code: { param in [
-            .literal(Value(.int, Prime.turn_into_palindrome(int(param[0])))),
-        ]}),
-        // Palindromed
-        .functionWithParams(name: "palin", parameters: .bigint, returnType: .bigint, code: { param in [
-            .literal(Value(.bigint, Prime.turn_into_palindrome((param[0]as!BigInt)))),
-        ]}),
-        // isPrime
-        .functionWithParams(name: "isPrime", parameters: .bigint, returnType: .bool, code: { param in [
-            .literal(Value(.bigint, Prime.isPrime(n: (param[0]as!BigInt)))),
-        ]}),
         
         
-        
-        // Sub Function
-    //    .functionWithParams(name: "sub", parameters: .tuple([.int, .int]), returnType: .int, code: { param in [
-    //        ._run(.add, [.literal(.int, param[0]), ._run(.neg, [.literal(.int, param[1])])])
-    //    ]}),
-        .functionWithParams(name: "times", parameters: .tuple([.int, .int]), returnType: .int, code: { param in [
-            .literal(Value(.int, (int(param[0]) * int(param[1])))),
-        ]}),
-        .functionWithParams(name: "div", parameters: .tuple([.int, .int]), returnType: .int, code: { param in [
-            .literal(Value(.int, (int(param[0]) / int(param[1])))),
-        ]}),
         
         
         // Sum Function

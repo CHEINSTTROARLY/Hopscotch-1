@@ -12,6 +12,15 @@ struct Prime {
     static func isPrime(n: BigInt) -> Bool {
         return n.isPrime(rounds: 1)
     }
+    static func nextPrime(n: BigInt) -> BigInt {
+        var on = n + 1
+        while true {
+            if on.isPrime(rounds: 1) {
+                return on
+            }
+            on += 1
+        }
+    }
     
     static func inverse_number(_ i: BigInt) -> BigInt {
         let inverse = "\(i)".reversed().reduce("") { $0 + String($1) }

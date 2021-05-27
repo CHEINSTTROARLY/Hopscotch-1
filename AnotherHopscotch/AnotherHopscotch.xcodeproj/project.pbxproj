@@ -17,6 +17,7 @@
 		1B416B37265D59DA008AF1BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B416B35265D59DA008AF1BB /* Main.storyboard */; };
 		1B416B43265D59DB008AF1BB /* AnotherHopscotchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B416B42265D59DB008AF1BB /* AnotherHopscotchTests.swift */; };
 		1B416B4E265D59DB008AF1BB /* AnotherHopscotchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B416B4D265D59DB008AF1BB /* AnotherHopscotchUITests.swift */; };
+		1B819754265FFF7900E71A14 /* CustomStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B819753265FFF7900E71A14 /* CustomStruct.swift */; };
 		1BDADB29265D83950011964A /* KeyCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB28265D83950011964A /* KeyCodes.swift */; };
 		1BDADB2C265D83C00011964A /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB2B265D83C00011964A /* extensions.swift */; };
 		1BDADB2E265D83D70011964A /* MagicShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BDADB2D265D83D70011964A /* MagicShapes.swift */; };
@@ -70,6 +71,7 @@
 		1B416B49265D59DB008AF1BB /* AnotherHopscotchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnotherHopscotchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B416B4D265D59DB008AF1BB /* AnotherHopscotchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherHopscotchUITests.swift; sourceTree = "<group>"; };
 		1B416B4F265D59DB008AF1BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B819753265FFF7900E71A14 /* CustomStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStruct.swift; sourceTree = "<group>"; };
 		1BDADB28265D83950011964A /* KeyCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCodes.swift; sourceTree = "<group>"; };
 		1BDADB2B265D83C00011964A /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		1BDADB2D265D83D70011964A /* MagicShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicShapes.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				1BDADB3C265DF2440011964A /* MagicTypes.swift */,
 				1BDADB3E265DF25F0011964A /* StackCode.swift */,
 				1BDADB40265DF2830011964A /* TheStack.swift */,
+				1B819753265FFF7900E71A14 /* CustomStruct.swift */,
 				1BDADB42265DF2B90011964A /* ResolveFunctions.swift */,
 				1BDADB44265DF2C90011964A /* Regex.swift */,
 				1BDADB46265DF3AE0011964A /* Equating.swift */,
@@ -361,6 +364,7 @@
 				1BDADB3F265DF25F0011964A /* StackCode.swift in Sources */,
 				1BDADB2E265D83D70011964A /* MagicShapes.swift in Sources */,
 				1BDADB43265DF2B90011964A /* ResolveFunctions.swift in Sources */,
+				1B819754265FFF7900E71A14 /* CustomStruct.swift in Sources */,
 				1B416B30265D59D9008AF1BB /* GameScene.swift in Sources */,
 				1BDADB34265DA4120011964A /* KeyPressed.swift in Sources */,
 				1B250B1D265EF580008CE121 /* MillerRabinPrimes.swift in Sources */,
