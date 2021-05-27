@@ -34,6 +34,16 @@ More TODOs:
 EVEN Greater Todos:
 - SpriteKit based programming... ;)
 
+---
+
+5.27.2021
+
+Now, instead of all functions being global and in the same place, I've created some behind-the-scenes data types
+
+i.e. `int` is now an object. int also contains it's own private functions. Function lookup is now much faster.
+
+TODO: Variables for Structs, Generic Structs, DIY Custom Structs
+
 ___
 
 ![Example 1](https://github.com/CHEINSTTROARLY/Hopscotch-1/blob/main/Example1.png)
