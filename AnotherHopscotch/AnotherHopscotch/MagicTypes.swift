@@ -30,4 +30,14 @@ enum MagicTypes: Hashable, Equatable {
         }
         return "\(lhs)" == "\(rhs)"
     }
+    
+    func firstString() -> String {
+        switch self {
+        case let .tuple(this):
+            if this.isEmpty { return "void" }
+            return "\(this[0])"
+        default:
+            return "\(self)"
+        }
+    }
 }

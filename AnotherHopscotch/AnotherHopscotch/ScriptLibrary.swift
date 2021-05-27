@@ -59,10 +59,6 @@ struct Precompile {
         ]}),
         
         
-        // Int Function
-        .functionWithParams(name: "int", parameters: .any, returnType: .int, code: { param in [
-            .literal(Value(.int, Int("\(param[0])") ?? 0)),
-        ]}),
         
         // Int Function
         .functionWithParams(name: "bigint", parameters: .any, returnType: .int, code: { param in [

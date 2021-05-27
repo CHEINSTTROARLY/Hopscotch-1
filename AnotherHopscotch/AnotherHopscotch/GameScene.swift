@@ -8,22 +8,32 @@
 import SpriteKit
 import GameplayKit
 
-
 var textual =
 """
-run|print(123.int.rev)|_ind(0)
-run|print(123.int.palin)|_ind(0)
-run|print(101.bigint.isPrime)|_ind(0)
-run|print(101.bigint.isPrime)|_ind(0)
-run|print(1111111111111111111.bigint.isPrime)|_ind(0)
-run|print(1111111111111111111.bigint.isPrime)|_ind(0)
-run|print(1111111111111111111.bigint.isPrime)|_ind(0)
-run|print(1111111111111111111.bigint.isPrime)|_ind(0)
-run|print(1111111111111111111.bigint.isPrime)|_ind(0)
-run|print(1111111111111111111.bigint.isPrime)|_ind(0)
-run|print(1111111111111111111.bigint.isPrime)|_ind(0)
-run|print(1111111111111111111.bigint.isPrime)|_ind(0)
+run|print(int(1).inc)|_ind(0)
 """
+//struct|Foo|_ind(0)
+//var|foo|=|0.int|_ind(1)
+//run|print(Int())|_ind(0)
+//run|print(Foo().foo)|_ind(0)
+
+
+
+//var textual =
+//"""
+//run|print(123.int.rev)|_ind(0)
+//run|print(123.int.palin)|_ind(0)
+//run|print(101.bigint.isPrime)|_ind(0)
+//run|print(101.bigint.isPrime)|_ind(0)
+//run|print(1111111111111111111.bigint.isPrime)|_ind(0)
+//run|print(1111111111111111111.bigint.isPrime)|_ind(0)
+//run|print(1111111111111111111.bigint.isPrime)|_ind(0)
+//run|print(1111111111111111111.bigint.isPrime)|_ind(0)
+//run|print(1111111111111111111.bigint.isPrime)|_ind(0)
+//run|print(1111111111111111111.bigint.isPrime)|_ind(0)
+//run|print(1111111111111111111.bigint.isPrime)|_ind(0)
+//run|print(1111111111111111111.bigint.isPrime)|_ind(0)
+//"""
 
 //run|print(1111111111111111111.bigint.isPrime)|_ind(0)
 //run|print(11111111111111111111111.bigint.isPrime)|_ind(0)
