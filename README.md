@@ -130,7 +130,7 @@ SpriteKit Transformations
 class SKNode
 - var children: [SKNode] = []
 - func addChild(SKNode)
-- func childNode(withName: String) -> SKNode
+- func childNode(withName: String) -> SKNode?
 - alpha: CGFloat = 1
 - xScale: CGFloat = 1
 - yScale: CGFloat = 1
