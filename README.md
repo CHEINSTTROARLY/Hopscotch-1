@@ -136,14 +136,14 @@ class SKNode
 - yScale: CGFloat = 1
 - setScale(_ to: CGFloat)
 - frame() -> CGRect
-- calculateAccumuatedFrame() -> CGRect
-- var parent: SKNode?
+- func calculateAccumuatedFrame() -> CGRect
+- func parent() -> SKNode?
 - func removeFromParent()
 - func removeAllChildren()
 - var zRotation: CGFloat = 0
 - var zPosition: CGFloat = 0
 - var physicsBody: SKPhysicsBody?
-- func run(_ action: SKAction)
+- func run(_ action: SKAction, withKey: String, completionHandler: () -> ())
 - var position: CGPoint = .zero
 
 Future Objects
