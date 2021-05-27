@@ -11,7 +11,8 @@ import Foundation
 var textual =
 """
 run|print(true.bool.not.not.not)|_ind(0)
-run|print(1.0)|_ind(0)
+run|print(-1.0)|_ind(0)
+run|print(1.0.add(2.0))|_ind(0)
 var|a|=|101.int|_ind(0)
 run|print($a)|_ind(0)
 run|print($a.$foo)|_ind(0)
